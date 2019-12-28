@@ -1,0 +1,59 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//◆ 背景颜色样式规则定义
+/**
+ * ◆ 背景颜色样式规则定义
+ *
+ * @subsubsection bgcolor_style_definition
+ */
+//背景颜色(暂只实现建议值和定义文件所指定的命名颜色)
+/*
+建议实现值：
+	基本灰度数值：0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F
+候选值：
+	双数灰度数值：01.......fe
+	16个基本颜色关键字 Basic color keywords
+	拓展颜色关键字 Extended color keywords
+*/
+$BGColorNData:0,1,2,3,4,5,6,7,8,9;
+$BGColorLData:a,b,c,d,e,f;
+//生成规则定义
+//单数字灰度值
+@each $value in $BGColorNData
+{
+	%bc#{$value}{background-color:#{"#"}#{$value}#{$value}#{$value};}
+	@if $IfGenCommonStyleDefinition
+	{
+		@if $IfGenAllSelectors or index($SelectedSelectors, bc#{$value}){.bc#{$value}{@extend %bc#{$value}}}
+	}
+}
+//单数字灰度值（16进制后6位字母）
+@each $value in $BGColorLData
+{
+	%bcz#{$value}{background-color:#{"#"}#{$value}#{$value}#{$value};}
+	@if $IfGenCommonStyleDefinition
+	{
+		@if $IfGenAllSelectors or index($SelectedSelectors, bcz#{$value}){.bcz#{$value}{@extend %bcz#{$value}}}
+	}
+}
+//颜色关键字
+@each $var, $value in $COLORS
+{
+    $a : map-get($value, Abbr);
+    $v : map-get($value, Value);
+
+    %bc#{$a}
+	{
+		background-color:$v;
+	}
+	@if $IfGenCommonStyleDefinition and ($IfGenAllSelectors or index($SelectedSelectors, bc#{$a}))
+	{
+		.bc#{$a}
+		{
+			@extend %bc#{$a};
+		}
+	}
+}
+
+//todo 其它值使用特定样式类名，或者后期用js计算。

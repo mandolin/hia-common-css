@@ -1,0 +1,17 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//◆ 列表项目位置样式规则定义
+/**
+ * ◆ 列表项目位置样式规则定义
+ *
+ * @subsubsection listposition_style_definition
+ */
+//特定值
+%lo{list-style-position:outside;} // 列表项目标记放置在文本以外，且环绕文本不根据标记对齐 (默认值，可不定义)
+%li{list-style-position:inside;} // 列表项目标记放置在文本以内，且环绕文本根据标记对齐
+@if $IfGenCommonStyleDefinition
+{
+	@if $IfGenAllSelectors or index($SelectedSelectors, lo){.lo{@extend %lo}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, li){.li{@extend %li}}
+}

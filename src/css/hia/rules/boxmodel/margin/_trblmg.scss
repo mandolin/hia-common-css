@@ -1,0 +1,147 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//◆ 上下左右外边距规则定义
+/**
+ * ◆ 上下左右外边距规则定义
+ *
+ * @subsubsection trblmg_style_definition
+ */
+//其他值
+%ma{margin:auto;}%mha{margin:0 auto;}%mva{margin:auto 0;}//水平（默认）书写模式下，margin-top/margin-bottom计算值为0，margin-left/margin-right取决于可用空间。
+@if $IfGenCommonStyleDefinition
+{
+	@if $IfGenAllSelectors or index($SelectedSelectors, ma){.ma{@extend %ma}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, mha){.mha{@extend %mha}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, mva){.mva{@extend %mva}}
+}
+
+//数字值(暂只实现建议值和候选值)
+$TRBLMGData:
+//建议实现值：
+	0,1,2,3,4,5,
+	10,15,20,25,
+	30,35,40,45,50,
+	60,70,80,90,100,
+	120,150,200,250,300,400,500,
+//候选值：
+	12,14,16,18,24,32,36,48,
+	6,7,8,9,11,13,
+	27,28,54,64,72,96,81
+//备用值：（几乎不需）
+	//600,700,800,900,1000
+;
+//生成规则定义
+@each $value in $TRBLMGData
+{
+	%m#{$value}{margin:#{$value}px;}%mx#{$value}{margin:-#{$value}px;}
+	%mt#{$value}{margin-top:#{$value}px;}%mtx#{$value}{margin-top:-#{$value}px;}
+	%mr#{$value}{margin-right:#{$value}px;}%mrx#{$value}{margin-right:-#{$value}px;}
+	%mb#{$value}{margin-bottom:#{$value}px;}%mbx#{$value}{margin-bottom:-#{$value}px;}
+	%ml#{$value}{margin-left:#{$value}px;}%mlx#{$value}{margin-left:-#{$value}px;}
+
+	@if $IfGenCommonStyleDefinition
+	{
+		@if $IfGenAllSelectors or index($SelectedSelectors, m#{$value}){.m#{$value}{@extend %m#{$value}}}
+		@if $IfGenAllSelectors or index($SelectedSelectors, mx#{$value}){.mx#{$value}{@extend %mx#{$value}}}
+
+		@if $IfGenAllSelectors or index($SelectedSelectors, mt#{$value}){.mt#{$value}{@extend %mt#{$value}}}
+		@if $IfGenAllSelectors or index($SelectedSelectors, mtx#{$value}){.mtx#{$value}{@extend %mtx#{$value}}}
+
+		@if $IfGenAllSelectors or index($SelectedSelectors, mr#{$value}){.mr#{$value}{@extend %mr#{$value}}}
+		@if $IfGenAllSelectors or index($SelectedSelectors, mrx#{$value}){.mrx#{$value}{@extend %mrx#{$value}}}
+
+		@if $IfGenAllSelectors or index($SelectedSelectors, mb#{$value}){.mb#{$value}{@extend %mb#{$value}}}
+		@if $IfGenAllSelectors or index($SelectedSelectors, mbx#{$value}){.mbx#{$value}{@extend %mbx#{$value}}}
+
+		@if $IfGenAllSelectors or index($SelectedSelectors, ml#{$value}){.ml#{$value}{@extend %ml#{$value}}}
+		@if $IfGenAllSelectors or index($SelectedSelectors, mlx#{$value}){.mlx#{$value}{@extend %mlx#{$value}}}
+
+	}
+}
+//rem数字值(暂只实现建议值和候选值)
+$TRBLMGRemData:
+//建议实现值：
+	0,1,2,3,4,5,
+	10,15,20,25,
+	30,35,40,45,50,
+	60,70,80,90,100,
+	120,150,200,250,300,400,500,
+//候选值：
+	12,14,16,18,24,32,36,48,
+	6,7,8,9,11,13,
+	27,28,54,64,72,96,81
+//备用值：（几乎不需）
+	//600,700,800,900,1000
+;
+//生成规则定义
+@each $value in $TRBLMGRemData
+{
+	%m#{$value}r{margin:#{$value}rem;}%mx#{$value}r{margin:-#{$value}rem;}
+	%mt#{$value}r{margin-top:#{$value}rem;}%mtx#{$value}r{margin-top:-#{$value}rem;}
+	%mr#{$value}r{margin-right:#{$value}rem;}%mrx#{$value}r{margin-right:-#{$value}rem;}
+	%mb#{$value}r{margin-bottom:#{$value}rem;}%mbx#{$value}r{margin-bottom:-#{$value}rem;}
+	%ml#{$value}r{margin-left:#{$value}rem;}%mlx#{$value}r{margin-left:-#{$value}rem;}
+
+	@if $IfGenCommonStyleDefinition
+	{
+		@if $IfGenAllSelectors or index($SelectedSelectors, m#{$value}r){.m#{$value}r{@extend %m#{$value}r}}
+		@if $IfGenAllSelectors or index($SelectedSelectors, mx#{$value}r){.mx#{$value}r{@extend %mx#{$value}r}}
+
+		@if $IfGenAllSelectors or index($SelectedSelectors, mt#{$value}r){.mt#{$value}r{@extend %mt#{$value}r}}
+		@if $IfGenAllSelectors or index($SelectedSelectors, mtx#{$value}r){.mtx#{$value}r{@extend %mtx#{$value}r}}
+
+		@if $IfGenAllSelectors or index($SelectedSelectors, mr#{$value}r){.mr#{$value}r{@extend %mr#{$value}r}}
+		@if $IfGenAllSelectors or index($SelectedSelectors, mrx#{$value}r){.mrx#{$value}r{@extend %mrx#{$value}r}}
+
+		@if $IfGenAllSelectors or index($SelectedSelectors, mb#{$value}r){.mb#{$value}r{@extend %mb#{$value}r}}
+		@if $IfGenAllSelectors or index($SelectedSelectors, mbx#{$value}r){.mbx#{$value}r{@extend %mbx#{$value}r}}
+
+		@if $IfGenAllSelectors or index($SelectedSelectors, ml#{$value}r){.ml#{$value}r{@extend %ml#{$value}r}}
+		@if $IfGenAllSelectors or index($SelectedSelectors, mlx#{$value}r){.mlx#{$value}r{@extend %mlx#{$value}r}}
+
+	}
+}
+//百分比值。（只实现建议值和候选值）
+$TRBLMGPData:
+//建议实现值：
+	50,100,
+	20,25,10,
+//候选值：
+	80,75,90,
+	30,70,40,60
+//备用值：（几乎不需）
+	//15,35,45,70,
+	//120,150,200,250,300,400,500。
+;
+//生成规则定义
+@each $value in $TRBLMGPData
+{
+	%mp#{$value}{margin:#{$value}#{"%"};}%mxp#{$value}{margin:-#{$value}#{"%"};}
+	%mtp#{$value}{margin-top:#{$value}#{"%"};}%mtxp#{$value}{margin-top:-#{$value}#{"%"};}
+	%mrp#{$value}{margin-right:#{$value}#{"%"};}%mrxp#{$value}{margin-right:-#{$value}#{"%"};}
+	%mbp#{$value}{margin-bottom:#{$value}#{"%"};}%mbxp#{$value}{margin-bottom:-#{$value}#{"%"};}
+	%mlp#{$value}{margin-left:#{$value}#{"%"};}%mlxp#{$value}{margin-left:-#{$value}#{"%"};}
+
+	@if $IfGenCommonStyleDefinition
+	{
+		@if $IfGenAllSelectors or index($SelectedSelectors, mp#{$value}){.mp#{$value}{@extend %mp#{$value}}}
+		@if $IfGenAllSelectors or index($SelectedSelectors, mxp#{$value}){.mxp#{$value}{@extend %mxp#{$value}}}
+
+		@if $IfGenAllSelectors or index($SelectedSelectors, mtp#{$value}){.mtp#{$value}{@extend %mtp#{$value}}}
+		@if $IfGenAllSelectors or index($SelectedSelectors, mtxp#{$value}){.mtxp#{$value}{@extend %mtxp#{$value}}}
+
+		@if $IfGenAllSelectors or index($SelectedSelectors, mrp#{$value}){.mrp#{$value}{@extend %mrp#{$value}}}
+		@if $IfGenAllSelectors or index($SelectedSelectors, mrxp#{$value}){.mrxp#{$value}{@extend %mrxp#{$value}}}
+
+		@if $IfGenAllSelectors or index($SelectedSelectors, mbp#{$value}){.mbp#{$value}{@extend %mbp#{$value}}}
+		@if $IfGenAllSelectors or index($SelectedSelectors, mbxp#{$value}){.mbxp#{$value}{@extend %mbxp#{$value}}}
+
+		@if $IfGenAllSelectors or index($SelectedSelectors, mlp#{$value}){.mlp#{$value}{@extend %mlp#{$value}}}
+		@if $IfGenAllSelectors or index($SelectedSelectors, mlxp#{$value}){.mlxp#{$value}{@extend %mlxp#{$value}}}
+
+	}
+}
+
+//todo em等后缀值。.ml1e{margin-left:1em;}
+//todo 其它值使用特定样式类名，或者后期用js计算。

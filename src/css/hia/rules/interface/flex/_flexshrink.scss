@@ -1,0 +1,32 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//◆ 收缩比例样式规则定义
+/**
+ * ◆ 扩展比例样式规则定义
+ *
+ * @subsubsection flexshrink_style_definition
+ */
+//像素间距(暂只实现建议值)
+$FSData:
+//建议实现值：
+	1,//(默认值，可不定义)
+	0,
+	2,3,4,5,
+	6,7,8,9,10,
+//候选值：
+	//15,20,25
+	//11,12,13,14,16,17,18,19
+//备用值：（几乎不需）
+	//30,35,40,45,50,
+;
+//生成规则定义
+@each $value in $FSData
+{
+	%fs#{$value}{flex-shrink:#{$value};}
+
+	@if $IfGenCommonStyleDefinition
+	{
+		@if $IfGenAllSelectors or index($SelectedSelectors, fs#{$value}){.fs#{$value}{@extend %fs#{$value}}}
+	}
+}

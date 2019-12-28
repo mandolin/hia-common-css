@@ -1,0 +1,32 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//◆ 背景位置样式规则定义
+/**
+ * ◆ 背景位置样式规则定义
+ *
+ * @subsubsection bgposition_style_definition
+ */
+//note 暂只实现基本位置 todo 后期如需要再考虑增加计算值
+%bpl{background-position:left}           // 背景图像居左。
+%bpc{background-position:center}         // 背景图像居中。
+%bpr{background-position:right}          // 背景图像居右。
+%bptl{background-position:left top}      // 背景图像居左上。（默认值 可不定义）
+%bptc{background-position:center top}    // 背景图像居中上。
+%bptr{background-position:right top}     // 背景图像居右上。
+%bpbl{background-position:left bottom}   // 背景图像居左下。
+%bpbc{background-position:center bottom} // 背景图像居中下。
+%bpbr{background-position:right bottom}  // 背景图像居右下。
+@if $IfGenCommonStyleDefinition
+{
+	@if $IfGenAllSelectors or index($SelectedSelectors, bpl){.bpl{@extend %bpl}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, bpc){.bpc{@extend %bpc}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, bpr){.bpr{@extend %bpr}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, bptl){.bptl{@extend %bptl}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, bptc){.bptc{@extend %bptc}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, bptr){.bptr{@extend %bptr}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, bpbl){.bpbl{@extend %bpbl}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, bpbc){.bpbc{@extend %bpbc}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, bpbr){.bpbr{@extend %bpbr}}
+
+}

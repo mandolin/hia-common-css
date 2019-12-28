@@ -1,0 +1,41 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//■ 基本字体
+/**
+ * ■ 基本字体
+ *
+ * todo 待补充完善(优先选择完整实现的字体（包含Regular, Bold, Italic, Bold Italic），按照在历代操作系统（以windows为主要考虑对象）中首次出现时间的顺序排列)。https://en.wikipedia.org/wiki/List_of_typefaces_included_with_Microsoft_Windows
+ * todo 补充各个字体的详细说明
+ *
+ * @subsection basic_fonts
+ */
+//系统字体
+$FONT_SYS_SANS_SERIF : sans-serif; //系统无衬线字体
+$FONT_SYS_SERIF      : serif     ; //系统衬线字体
+//英文字体
+$FONT_ARIAL           : Arial            ;
+$FONT_ARIAL_BLACK     : 'Arial Black'    ;
+$FONT_CALIBRI         : Calibri          ;
+$FONT_CONSOLAS        : Consolas         ;
+$FONT_COURIER_NEW     : 'Courier New'    ;
+$FONT_GEORGIA         : Georgia          ;
+$FONT_VERDANA         : Verdana          ;
+$FONT_COMIC_SANS_MS   : 'Comic Sans MS'  ;
+$FONT_GARAMOND        : Garamond         ;
+$FONT_IMPACT          : Impact           ;
+$FONT_HELVETICA       : Helvetica        ;
+$FONT_LUCIDA_CONSOLE  : 'Lucida Console' ;
+$FONT_PROFONT         : Profont          ;
+$FONT_PROGGY          : Proggy           ;
+$FONT_TAHOMA          : Tahoma           ;
+$FONT_TREBUCHET_MS    : 'Trebuchet MS'   ;
+$FONT_TIMES_NEW_ROMAN : 'Times New Roman';
+
+//中文字体
+$FONT_YAHEI    : 'Microsoft YaHei'; //微软雅黑
+$FONT_NSIMSUN  : NSimSun          ; //新宋体
+$FONT_SIMHEI   : SimHei           ; //黑体
+$FONT_SIMKAI   : SimKai           ; //楷体
+$FONT_SIMSUN   : SimSun           ; //宋体
+$FONT_FANGSONG : FangSong         ; //宋体

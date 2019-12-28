@@ -1,0 +1,19 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//◆ 子元素换行选项样式规则定义
+/**
+ * ◆ 子元素换行选项样式规则定义
+ *
+ * @subsubsection flexwrap_style_definition
+ */
+//特定值
+%fwn{flex-wrap:nowrap;} // flex容器为单行。该情况下flex子项可能会溢出容器  (默认值，可不定义)
+%fww{flex-wrap:wrap;} // flex容器为多行。该情况下flex子项溢出的部分会被放置到新行，子项内部会发生断行
+%fwwr{flex-wrap:wrap-reverse;} // 反转 wrap 排列。
+@if $IfGenCommonStyleDefinition
+{
+	@if $IfGenAllSelectors or index($SelectedSelectors, fwn){.fwn{@extend %fwn}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, fww){.fww{@extend %fww}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, fwwr){.fwwr{@extend %fwwr}}
+}

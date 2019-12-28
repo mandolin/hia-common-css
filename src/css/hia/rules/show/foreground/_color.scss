@@ -1,0 +1,59 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//◆ 颜色样式规则定义
+/**
+ * ◆ 颜色样式规则定义
+ *
+ * @subsubsection color_style_definition
+ */
+//颜色(暂只实现建议值)
+/*
+建议实现值：
+	基本灰度数值：0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F
+候选值：
+	双数灰度数值：01.......fe
+	16个基本颜色关键字 Basic color keywords
+	拓展颜色关键字 Extended color keywords
+*/
+$ColorNData:0,1,2,3,4,5,6,7,8,9;
+$ColorLData:a,b,c,d,e,f;
+//生成规则定义
+//单数字灰度值
+@each $value in $ColorNData
+{
+	%c#{$value}{color:#{"#"}#{$value}#{$value}#{$value};}
+	@if $IfGenCommonStyleDefinition
+	{
+		@if $IfGenAllSelectors or index($SelectedSelectors, c#{$value}){.c#{$value}{@extend %c#{$value}}}
+	}
+}
+//单数字灰度值（16进制后6位字母）
+@each $value in $ColorLData
+{
+	%cz#{$value}{color:#{"#"}#{$value}#{$value}#{$value};}
+	@if $IfGenCommonStyleDefinition
+	{
+		@if $IfGenAllSelectors or index($SelectedSelectors, cz#{$value}){.cz#{$value}{@extend %cz#{$value}}}
+	}
+}
+//颜色关键字
+@each $var, $value in $COLORS
+{
+    $a:map-get($value, Abbr);
+    $v:map-get($value, Value);
+
+    %c#{$a}
+	{
+		color:$v;
+	}
+	@if $IfGenCommonStyleDefinition and ($IfGenAllSelectors or index($SelectedSelectors, c#{$a}))
+	{
+		.c#{$a}
+		{
+			@extend %c#{$a};
+		}
+	}
+}
+
+//todo 其它值使用特定样式类名，或者后期用js计算。

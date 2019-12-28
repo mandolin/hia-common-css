@@ -1,0 +1,29 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//◆ 字体拉伸样式规则定义
+/**
+ * ◆ 字体拉伸样式规则定义
+ *
+ * @subsubsection fontstretch_style_definition
+ */
+%fsuc{font-stretch:ultra-condensed; }// 比正常文字宽度窄4个基数。
+%fsec{font-stretch:extra-condensed; }// 比正常文字宽度窄3个基数。
+%fsc{font-stretch:condensed; }// 比正常文字宽度窄2个基数。
+%fssc{font-stretch:semi-condensed; }// 比正常文字宽度窄1个基数。
+%fsse{font-stretch:semi-expanded; }// 比正常文字宽度宽1个基数。
+%fse{font-stretch:expanded; }// 比正常文字宽度宽2个基数。
+%fsee{font-stretch:extra-expanded; }// 比正常文字宽度宽3个基数。
+%fsue{font-stretch:ultra-expanded; }// 比正常文字宽度宽4个基数。
+@if $IfGenCommonStyleDefinition
+{
+    @if $IfGenAllSelectors or index($SelectedSelectors, fsuc){.fsuc{@extend %fsuc}}
+    @if $IfGenAllSelectors or index($SelectedSelectors, fsec){.fsec{@extend %fsec}}
+    @if $IfGenAllSelectors or index($SelectedSelectors, fsc){.fsc{@extend %fsc}}
+    @if $IfGenAllSelectors or index($SelectedSelectors, fssc){.fssc{@extend %fssc}}
+    @if $IfGenAllSelectors or index($SelectedSelectors, fsse){.fsse{@extend %fsse}}
+    @if $IfGenAllSelectors or index($SelectedSelectors, fse){.fse{@extend %fse}}
+    @if $IfGenAllSelectors or index($SelectedSelectors, fsee){.fsee{@extend %fsee}}
+    @if $IfGenAllSelectors or index($SelectedSelectors, fsue){.fsue{@extend %fsue}}
+
+}

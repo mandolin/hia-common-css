@@ -1,0 +1,33 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//◆ 事件指向样式规则定义
+/**
+ * ◆ 事件指向样式规则定义
+ *
+ * @subsubsection pointerevents_style_definition
+ */
+//特定值
+%pea{pointer-events:auto;} //与pointer-events属性未指定时的表现效果相同。在svg内容上与visiblepainted值相同  (默认值，可不定义)
+%pen{pointer-events:none;} //元素永远不会成为鼠标事件的target。但是，当其后代元素的pointer-events属性指定其他值时，鼠标事件可以指向后代元素，在这种情况下，鼠标事件将在捕获或冒泡阶触发父元素的事件侦听器。
+%pevp{pointer-events:visiblepainted;} //应用在SVG上
+%pevf{pointer-events:visiblefill;} //应用在SVG上
+%pevs{pointer-events:visiblestroke;} //应用在SVG上
+%pev{pointer-events:visible;} //应用在SVG上
+%pep{pointer-events:painted;} //应用在SVG上
+%pef{pointer-events:fill;} //应用在SVG上
+%pes{pointer-events:stroke;} //应用在SVG上
+%peall{pointer-events:all;} //应用在SVG上
+@if $IfGenCommonStyleDefinition
+{
+	@if $IfGenAllSelectors or index($SelectedSelectors, pea){.pea{@extend %pea}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, pen){.pen{@extend %pen}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, pevp){.pevp{@extend %pevp}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, pevf){.pevf{@extend %pevf}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, pevs){.pevs{@extend %pevs}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, pev){.pev{@extend %pev}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, pep){.pep{@extend %pep}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, pef){.pef{@extend %pef}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, pes){.pes{@extend %pes}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, peall){.peall{@extend %peall}}
+}

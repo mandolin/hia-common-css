@@ -1,0 +1,53 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//◆ 列表项类型样式规则定义
+/**
+ * ◆ 列表项类型样式规则定义
+ *
+ * @subsubsection listtype_style_definition
+ */
+//特定值
+%ld{list-style-type:disc;} // 实心圆(CSS1)(默认值，可不定义)
+%lc{list-style-type:circle;} // 空心圆(CSS1)
+%ls{list-style-type:square;} // 实心方块(CSS1)
+%ldc{list-style-type:decimal;} // 阿拉伯数字(CSS1)
+%llr{list-style-type:lower-roman;} //  小写罗马数字(CSS1)
+%lur{list-style-type:upper-roman;} // 大写罗马数字(CSS1)
+%lla{list-style-type:lower-alpha;} // 小写英文字母(CSS1)
+%lua{list-style-type:upper-alpha;} // 大写英文字母(CSS1)
+%ln{list-style-type:none;} // 不使用项目符号(CSS1)
+%lan{list-style-type:armenian;} // 传统的亚美尼亚数字(CSS2)
+%lci{list-style-type:cjk-ideographic;} // 浅白的表意数字(CSS2)
+%lg{list-style-type:georgian;} //  传统的乔治数字(CSS2)
+%llg{list-style-type:lower-greek;} //  基本的希腊小写字母(CSS2)
+%lhb{list-style-type:hebrew;} // 传统的希伯莱数字(CSS2)
+%lh{list-style-type:hiragana;} // 日文平假名字符(CSS2)
+%lhi{list-style-type:hiragana-iroha;} // 日文平假名序号(CSS2)
+%lk{list-style-type:katakana;} // 日文片假名字符(CSS2)
+%lki{list-style-type:katakana-iroha;} // 日文片假名序号(CSS2)
+%lll{list-style-type:lower-latin;} // 小写拉丁字母(CSS2)
+%lul{list-style-type:upper-latin;} // 大写拉丁字母(CSS2)
+@if $IfGenCommonStyleDefinition
+{
+	@if $IfGenAllSelectors or index($SelectedSelectors, ld){.ld{@extend %ld}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, lc){.lc{@extend %lc}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, ls){.ls{@extend %ls}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, ldc){.ldc{@extend %ldc}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, llr){.llr{@extend %llr}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, lur){.lur{@extend %lur}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, lla){.lla{@extend %lla}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, lua){.lua{@extend %lua}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, ln){.ln{@extend %ln}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, lan){.lan{@extend %lan}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, lci){.lci{@extend %lci}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, lg){.lg{@extend %lg}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, llg){.llg{@extend %llg}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, lhb){.lhb{@extend %lhb}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, lh){.lh{@extend %lh}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, lhi){.lhi{@extend %lhi}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, lk){.lk{@extend %lk}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, lki){.lki{@extend %lki}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, lll){.lll{@extend %lll}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, lul){.lul{@extend %lul}}
+}

@@ -1,0 +1,17 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//◆ 表格边框合并样式规则定义
+/**
+ * ◆ 表格边框合并样式规则定义
+ *
+ * @subsubsection tablebordercollapse_style_definition
+ */
+//特定值
+%tbcs{border-collapse:separate;} // 边框独立 (默认值，可不定义)
+%tbcc{border-collapse:collapse;} // 相邻边被合并
+@if $IfGenCommonStyleDefinition
+{
+	@if $IfGenAllSelectors or index($SelectedSelectors, tbcs){.tbcs{@extend %tbcs}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, tbcc){.tbcc{@extend %tbcc}}
+}

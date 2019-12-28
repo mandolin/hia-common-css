@@ -1,0 +1,17 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//◆ 表格空单元格边框显示样式规则定义
+/**
+ * ◆ 表格空单元格边框显示样式规则定义
+ *
+ * @subsubsection tableemptycells_style_definition
+ */
+//特定值
+%es{empty-cells:show;} // 指定当表格的单元格无内容时，显示该单元格的边框。(默认值，可不定义)
+%eh{empty-cells:hide;} // 指定当表格的单元格无内容时，隐藏该单元格的边框。
+@if $IfGenCommonStyleDefinition
+{
+	@if $IfGenAllSelectors or index($SelectedSelectors, es){.es{@extend %es}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, eh){.eh{@extend %eh}}
+}

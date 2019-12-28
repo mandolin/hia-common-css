@@ -1,0 +1,20 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//◆ 背景滚动固定样式规则定义
+/**
+ * ◆ 背景滚动固定样式规则定义
+ *
+ * @subsubsection bgattachment_style_definition
+ */
+%baf{background-attachment:fixed } // 背景图像相对于视口（viewport）固定。
+%bas{background-attachment:scroll} //背景图像相对于元素固定，也就是说当元素内容滚动时背景图像不会跟着滚动，因为背景图像总是要跟着元素本身。但会随元素的祖先元素或窗体一起滚动。(默认值，可不定义)
+%bal{background-attachment:local } //背景图像在横向和纵向平铺
+
+@if $IfGenCommonStyleDefinition
+{
+    @if $IfGenAllSelectors or index($SelectedSelectors, baf){.baf{@extend %baf}}
+    @if $IfGenAllSelectors or index($SelectedSelectors, bas){.bas{@extend %bas}}
+    @if $IfGenAllSelectors or index($SelectedSelectors, bal){.bal{@extend %bal}}
+
+}

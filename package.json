@@ -1,0 +1,54 @@
+{
+  "name": "hia-common-css",
+  "version": "1.0.0",
+  "description": "an atom css lib",
+  "main": "dist/css/hia_common.css",
+  "style": "./dist/css/hia_common.css",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prod": "webpack --progress --config webpack.prod.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mandolin/hia-common-css.git"
+  },
+  "keywords": [
+    "Atomic css lib",
+    "hia",
+    "css"
+  ],
+  "author": {
+    "name": "mandolin",
+    "email": "mandolin.mdy@gmail.com",
+    "url": "https://github.com/mandolin"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mandolin/hia-common-css/issues"
+  },
+  "homepage": "https://github.com/mandolin/hia-common-css#readme",
+  "dependencies": {
+    "normalize.css": "^8.0.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.7.3",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^5.1.1",
+    "css-loader": "^3.4.0",
+    "cssnano": "^4.1.10",
+    "extract-loader": "^3.1.0",
+    "file-loader": "^5.0.2",
+    "node-sass": "^4.13.0",
+    "postcss-cssnext": "^3.1.0",
+    "postcss-import": "^12.0.1",
+    "postcss-loader": "^3.0.0",
+    "sass-loader": "^8.0.0",
+    "style-loader": "^1.1.2",
+    "webpack": "^4.41.5",
+    "webpack-chunk-rename-plugin": "^1.0.3",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.10.1",
+    "webpack-manifest-plugin": "^2.2.0",
+    "webpack-merge": "^4.2.2"
+  }
+}

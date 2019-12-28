@@ -1,0 +1,442 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+
+/* _wxss.scss v0.0.1 | MIT License */
+//HIA CSS 框架 SCSS 通用common wxss样式文件（架构文件）
+/**
+ * HIA CSS 框架 SCSS 通用common wxss样式文件（架构文件）
+ *
+ * 样式规则的通用抽象整理和类定义
+ * 主要包括整体样式定义、盒模型、显示样式、文字样式、内容样式、高级界面样式、效果样式、响应式样式以及其它。
+ *
+ * @project   HIA CSS 框架
+ * @file      _wxss.scss
+ * @version   0.0.1
+ * @package   scss
+ * @author    mandolin
+ * @copyright 2015 by mandolin
+ * @cssdoc    version 1.0-pre
+ * @license   MIT
+ *
+ * @note      以下颜色定义仅为示例，需要根据项目情况改为实际用到的值。
+ * @colordef  #fff;    白色
+ * @colordef  #808080; 标准灰色
+ *
+ * @note      在本sass体系中只对复杂规则进行mixin定义。todo 在less和stylus体系中可考虑对mixin进行全面定义。
+ *
+ * @note      以下样式规则需要根据站点实际情况选用。
+ */
+/*----------------------------------------------------------------------------------------------------*/
+/**
+ * ◎ 相关变量
+ *
+ * @section overall_variables
+ */
+$IfGenWxssStyleDefinition : false!default; //指示是否生成通用样式的实际定义，note 默认为不生成。
+$IfContainHiaWxssResetCss : true !default;
+$IfGenAllWxssSelectors        : true !default; //指示是否生成所有选择器，note 默认为生成（即完整版）。
+$SelectedWxssSelectors       : ()   !default; //按指定生成的选择器列表
+/*----------------------------------------------------------------------------------------------------*/
+
+//首先重置一些box-sizing
+@if $IfGenWxssStyleDefinition and $IfContainHiaWxssResetCss {
+    view,
+    scroll-view,
+    swiper,
+    swiper-item,
+    movable-area,
+    movable-view,
+    cover-view,
+    cover-image,
+    icon,
+    text,
+    rich-text,
+    progress,
+    button,
+    checkbox-group,
+    checkbox,
+    form,
+    input,
+    label,
+    picker,
+    picker-view,
+    radio-group,
+    radio,
+    slider,
+    switch,
+    textarea,
+    navigator,
+    functional-page-navigator,
+    image,
+    video,
+    camera,
+    live-player,
+    live-pusher,
+    map,
+    canvas,
+    open-data,
+    web-view,
+    ad {
+        box-sizing: border-box;
+
+        &::after {
+            box-sizing: border-box;
+        }
+
+        &::before {
+            box-sizing: border-box;
+        }
+    }
+}
+
+//一些rpx值
+/*
+top right bottom left
+
+width
+
+//min-width note 后期需要再添加
+
+//max-width note 后期需要再添加
+
+height
+
+//min-height note 后期需要再添加
+
+//max-height note 后期需要再添加
+
+margin
+
+padding
+
+border-width
+
+border-radius
+
+font-size
+
+text-indent
+
+line-height
+
+//border-spacing note 后期需要再添加
+
+outline-width
+
+
+*/
+
+//top right bottom left
+$RpxTRBLData:
+//建议实现值：
+    1,2,3,4,5,10,15,20,25,30,35,40,45,50,60,70,75,80,90,100,
+    120,125,130,140,150,160,170,175,180,200,
+    225,240,250,260,275,280,300,
+    320,350,375
+;
+//生成规则定义
+@each $value in $RpxTRBLData
+{
+    %t#{$value}rp{top:#{$value}rpx;}%tx#{$value}rp{top:-#{$value}rpx;}
+    %r#{$value}rp{right:#{$value}rpx;}%rx#{$value}rp{right:-#{$value}rpx;}
+    %b#{$value}rp{bottom:#{$value}rpx;}%bx#{$value}rp{bottom:-#{$value}rpx;}
+    %l#{$value}rp{left:#{$value}rpx;}%lx#{$value}rp{left:-#{$value}rpx;}
+
+	@if $IfGenWxssStyleDefinition
+	{
+		@if $IfGenAllWxssSelectors or index($SelectedWxssSelectors, t#{$value}rp){.t#{$value}rp{@extend %t#{$value}rp}}
+		@if $IfGenAllWxssSelectors or index($SelectedWxssSelectors, tx#{$value}rp){.tx#{$value}rp{@extend %tx#{$value}rp}}
+
+		@if $IfGenAllWxssSelectors or index($SelectedWxssSelectors, r#{$value}rp){.r#{$value}rp{@extend %r#{$value}rp}}
+		@if $IfGenAllWxssSelectors or index($SelectedWxssSelectors, rx#{$value}rp){.rx#{$value}rp{@extend %rx#{$value}rp}}
+
+		@if $IfGenAllWxssSelectors or index($SelectedWxssSelectors, b#{$value}rp){.b#{$value}rp{@extend %b#{$value}rp}}
+		@if $IfGenAllWxssSelectors or index($SelectedWxssSelectors, bx#{$value}rp){.bx#{$value}rp{@extend %bx#{$value}rp}}
+
+		@if $IfGenAllWxssSelectors or index($SelectedWxssSelectors, l#{$value}rp){.l#{$value}rp{@extend %l#{$value}rp}}
+		@if $IfGenAllWxssSelectors or index($SelectedWxssSelectors, lx#{$value}rp){.lx#{$value}rp{@extend %lx#{$value}rp}}
+
+	}
+
+}
+
+//width height
+$RpxHWData:
+//建议实现值：
+	10,15,20,25,30,35,40,45,50,
+	60,70,75,80,90,100,
+    120,125,130,140,150,160,170,175,180,200,
+    225,240,250,260,275,280,300,
+    320,350,375,
+    400,450,500,600,700,750,800,900,1000,
+
+//候选值：
+	1,2,3,4,5,
+	12,14,16,18,24,32,36,48,
+	6,7,8,9,11,13,
+//备用值：（几乎不需）
+	//27,28,81,
+	//54,64,72,96
+;
+//生成规则定义
+@each $value in $RpxHWData
+{
+    %h#{$value}rp{height:#{$value}rpx;}
+    %w#{$value}rp{width:#{$value}rpx;}
+
+    @if $IfGenWxssStyleDefinition
+    {
+        @if $IfGenAllWxssSelectors or index($SelectedWxssSelectors, h#{$value}rp){.h#{$value}rp{@extend %h#{$value}rp}}
+        @if $IfGenAllWxssSelectors or index($SelectedWxssSelectors, w#{$value}rp){.w#{$value}rp{@extend %w#{$value}rp}}
+    }
+}
+
+//margins
+$RpxTRBLMGData:
+//建议实现值：
+	1,2,3,4,5,
+	10,15,20,25,30,35,40,45,50,
+	60,70,75,80,90,100,
+    120,125,130,140,150,160,170,175,180,200,
+    225,240,250,260,275,280,300,
+    320,350,375,
+    400,450,500,
+//候选值：
+	12,14,16,18,24,32,36,48,
+	6,7,8,9,11,13,
+	27,28,54,64,72,96,81
+//备用值：（几乎不需）
+    //600,700,800,900,1000
+;
+//生成规则定义
+@each $value in $RpxTRBLMGData
+{
+    @if $value < 300 {%m#{$value}rp{margin:#{$value}rpx;}%mx#{$value}rp{margin:-#{$value}rpx;}}
+
+	%mt#{$value}rp{margin-top:#{$value}rpx;}%mtx#{$value}rp{margin-top:-#{$value}rpx;}
+	%mr#{$value}rp{margin-right:#{$value}rpx;}%mrx#{$value}rp{margin-right:-#{$value}rpx;}
+	%mb#{$value}rp{margin-bottom:#{$value}rpx;}%mbx#{$value}rp{margin-bottom:-#{$value}rpx;}
+	%ml#{$value}rp{margin-left:#{$value}rpx;}%mlx#{$value}rp{margin-left:-#{$value}rpx;}
+
+	@if $IfGenWxssStyleDefinition
+	{
+        @if $value < 300
+        {
+            @if $IfGenAllWxssSelectors or index($SelectedWxssSelectors, m#{$value}rp){.m#{$value}rp{@extend %m#{$value}rp}}
+            @if $IfGenAllWxssSelectors or index($SelectedWxssSelectors, mx#{$value}rp){.mx#{$value}rp{@extend %mx#{$value}rp}}
+        }
+
+		@if $IfGenAllWxssSelectors or index($SelectedWxssSelectors, mt#{$value}rp){.mt#{$value}rp{@extend %mt#{$value}rp}}
+		@if $IfGenAllWxssSelectors or index($SelectedWxssSelectors, mtx#{$value}rp){.mtx#{$value}rp{@extend %mtx#{$value}rp}}
+
+		@if $IfGenAllWxssSelectors or index($SelectedWxssSelectors, mr#{$value}rp){.mr#{$value}rp{@extend %mr#{$value}rp}}
+		@if $IfGenAllWxssSelectors or index($SelectedWxssSelectors, mrx#{$value}rp){.mrx#{$value}rp{@extend %mrx#{$value}rp}}
+
+		@if $IfGenAllWxssSelectors or index($SelectedWxssSelectors, mb#{$value}rp){.mb#{$value}rp{@extend %mb#{$value}rp}}
+		@if $IfGenAllWxssSelectors or index($SelectedWxssSelectors, mbx#{$value}rp){.mbx#{$value}rp{@extend %mbx#{$value}rp}}
+
+		@if $IfGenAllWxssSelectors or index($SelectedWxssSelectors, ml#{$value}rp){.ml#{$value}rp{@extend %ml#{$value}rp}}
+		@if $IfGenAllWxssSelectors or index($SelectedWxssSelectors, mlx#{$value}rp){.mlx#{$value}rp{@extend %mlx#{$value}rp}}
+
+	}
+}
+
+//padding
+$RpxTRBLPDData:
+//建议实现值：
+	1,2,3,4,5,
+	10,15,20,25,30,35,40,45,50,
+	60,70,75,80,90,100,
+    120,125,130,140,150,160,170,175,180,200,
+    225,240,250,260,275,280,300,
+    320,350,375,
+    400,450,500,
+//候选值：
+	12,14,16,18,24,32,36,48,
+	6,7,8,9,11,13,
+	27,28,54,64,72,96,81
+//备用值：（几乎不需）
+    //600,700,800,900,1000
+;
+//生成规则定义
+@each $value in $RpxTRBLPDData
+{
+    @if $value < 300{
+        %p#{$value}rp{padding:#{$value}rpx;}
+    }
+
+	%pt#{$value}rp{padding-top:#{$value}rpx;}
+	%pr#{$value}rp{padding-right:#{$value}rpx;}
+	%pb#{$value}rp{padding-bottom:#{$value}rpx;}
+	%pl#{$value}rp{padding-left:#{$value}rpx;}
+
+	@if $IfGenWxssStyleDefinition
+	{
+        @if $value < 300{
+            @if $IfGenAllWxssSelectors or index($SelectedWxssSelectors, p#{$value}rp){.p#{$value}rp{@extend %p#{$value}rp}}
+        }
+
+		@if $IfGenAllWxssSelectors or index($SelectedWxssSelectors, pt#{$value}rp){.pt#{$value}rp{@extend %pt#{$value}rp}}
+
+		@if $IfGenAllWxssSelectors or index($SelectedWxssSelectors, pr#{$value}rp){.pr#{$value}rp{@extend %pr#{$value}rp}}
+
+		@if $IfGenAllWxssSelectors or index($SelectedWxssSelectors, pb#{$value}rp){.pb#{$value}rp{@extend %pb#{$value}rp}}
+
+		@if $IfGenAllWxssSelectors or index($SelectedWxssSelectors, pl#{$value}rp){.pl#{$value}rp{@extend %pl#{$value}rp}}
+
+	}
+}
+
+//border-width
+$RpxBorderData:
+//建议实现值：
+	1,2,3,4,5,
+	10,15,20,25
+//候选值：
+	//6,,7,8,9,
+	//30,35,40,45,50,
+//备用值：（几乎不需）
+	//60,70,80,90,100
+;
+//生成规则定义
+@each $value in $RpxBorderData
+{
+	%bw#{$value}rp{border-width:#{$value}rpx;}
+
+	@if $IfGenWxssStyleDefinition
+	{
+		@if $IfGenAllWxssSelectors or index($SelectedWxssSelectors, bw#{$value}rp){.bw#{$value}rp{@extend %bw#{$value}rp}}
+	}
+}
+
+//border-radius
+$RpxRadiusData:
+//建议实现值：
+	1,2,3,4,5,
+//候选值：
+	10,15,20,25,
+	6,7,8,9,
+	//30,35,40,45,50,
+//备用值：（几乎不需）
+	//60,70,80,90,100
+;
+//生成规则定义
+@each $value in $RpxRadiusData
+{
+	%br#{$value}rp{border-radius:#{$value}rpx;}
+
+	@if $IfGenWxssStyleDefinition
+	{
+		@if $IfGenAllWxssSelectors or index($SelectedWxssSelectors, br#{$value}rp){.br#{$value}rp{@extend %br#{$value}rp}}
+	}
+}
+
+//font-size
+$RpxFontSizeData:
+//建议实现值：
+	1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,18,20,24,28,32,36,48
+//候选值：
+	//25,30
+//备用值：（几乎不需）
+	//
+;
+//生成规则定义
+@each $value in $RpxFontSizeData
+{
+	%f#{$value}rp{font-size:#{$value}rpx;}
+
+	@if $IfGenWxssStyleDefinition
+	{
+		@if $IfGenAllWxssSelectors or index($SelectedWxssSelectors, f#{$value}rp){.f#{$value}rp{@extend %f#{$value}rp}}
+	}
+}
+
+//text-indent
+$RpxTextIndentData:
+//建议实现值：
+	1,2,3,4,5,
+	6,7,8,9,10,
+	11,12,13,14,15,
+	16,18,20,24,28,32,36,48,
+	22,26,30,40,56,64,72,
+//候选值：
+	//25,30,35,40,45,50,
+//备用值：（几乎不需）
+	//60,70,80,90,100
+;
+//生成规则定义
+@each $value in $RpxTextIndentData
+{
+	%ti#{$value}rp{text-indent:#{$value}rpx;}
+
+	@if $IfGenWxssStyleDefinition
+	{
+		@if $IfGenAllWxssSelectors or index($SelectedWxssSelectors, ti#{$value}rp){.ti#{$value}rp{@extend %ti#{$value}rp}}
+	}
+}
+
+$RpxTextIndentNegData:
+//建议实现值：
+	1,2,3,4,5,
+	6,7,8,9,10,
+	11,12,13,14,15,
+	16,18,20,24,28,32,36,48,
+//候选值：
+	//25,30,35,40,45,50,
+//备用值：（几乎不需）
+	//60,70,80,90,100
+;
+//生成规则定义
+@each $value in $RpxTextIndentNegData
+{
+	%tix#{$value}rp{text-indent:-#{$value}rpx;}
+
+	@if $IfGenWxssStyleDefinition
+	{
+		@if $IfGenAllWxssSelectors or index($SelectedWxssSelectors, tix#{$value}rp){.tix#{$value}rp{@extend %tix#{$value}rp}}
+	}
+}
+
+//line-height
+$RpxLineHeightData:
+//建议实现值：
+    1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,18,20,24,28,32,36,48,
+    20,25,30,35,40,45,50,
+	60,70,80,90,100
+//候选值：
+	//25,30
+//备用值：（几乎不需）
+	//
+;
+//生成规则定义
+@each $value in $RpxLineHeightData
+{
+	%lh#{$value}rp{line-height:#{$value}rpx;}
+
+	@if $IfGenWxssStyleDefinition
+	{
+		@if $IfGenAllWxssSelectors or index($SelectedWxssSelectors, lh#{$value}rp){.lh#{$value}rp{@extend %lh#{$value}rp}}
+	}
+}
+
+//outline-width
+$RpxOutlineData:
+//建议实现值：
+	1,2,3,4,5,
+	10,15,20,25
+//候选值：
+	//6,,7,8,9,
+	//30,35,40,45,50,
+//备用值：（几乎不需）
+	//60,70,80,90,100
+;
+//生成规则定义
+@each $value in $RpxOutlineData
+{
+	%ow#{$value}rp{outline-width:#{$value}rpx;}
+
+	@if $IfGenWxssStyleDefinition
+	{
+		@if $IfGenAllWxssSelectors or index($SelectedWxssSelectors, ow#{$value}rp){.ow#{$value}rp{@extend %ow#{$value}rp}}
+	}
+}

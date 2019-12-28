@@ -1,0 +1,36 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//◆ 盒模型对象子元素出現順序样式规则定义
+/**
+ * ◆ 盒模型对象子元素出現順序样式规则定义
+ *
+ * @subsubsection order_style_definition
+ */
+//数字值
+$OrderData:1,2,3,4,5,6,7,8,9,10,100;
+//生成规则定义
+@each $value in $OrderData
+{
+  %od#{$value}{order:$value}
+  %odx#{$value}{order:-$value}
+  @if $IfGenCommonStyleDefinition
+  {
+	@if $IfGenAllSelectors or index($SelectedSelectors, od#{$value}){.od#{$value}{@extend %od#{$value}}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, odx#{$value}){.odx#{$value}{@extend %odx#{$value}}}
+  }
+}
+//其它值
+%od0{order:0;}// (默认值，可不定义)
+%odm{order:2147483647;}//最顶层
+%odn{order:-2147483648;}//最底层
+@if $IfGenCommonStyleDefinition
+{
+	@if $IfGenAllSelectors or index($SelectedSelectors, od0){.od0{@extend %od0}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, odm){.odm{@extend %odm}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, odn){.odn{@extend %odn}}
+
+}
+
+//todo 需要一些大数字时，最简命名可参考其英文缩略语。可选：比如 od1k{order:1000;} od2m{order:2000000;}
+//todo 其它值使用特定样式类名，或者后期用js计算。

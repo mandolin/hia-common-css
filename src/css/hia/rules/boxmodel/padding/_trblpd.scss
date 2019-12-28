@@ -1,0 +1,131 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//◆ 上下左右内边距规则定义
+/**
+ * ◆ 上下左右内边距规则定义
+ *
+ * @subsubsection trblpd_style_definition
+ */
+//数字值(暂只实现建议值和候选值)
+$TRBLPDData:
+//建议实现值：
+	0,1,2,3,4,5,
+	10,15,20,25,
+	30,35,40,45,50,
+	120,150,200,250,300,400,500,
+//候选值：
+	12,14,16,18,24,32,36,48,
+	6,7,8,9,11,13,
+	60,70,80,90,100,
+	27,28,54,64,72,96,81
+//备用值：（几乎不需）
+	//120,150,200,250,300,400,500。
+;
+//生成规则定义
+@each $value in $TRBLPDData
+{
+	%p#{$value}{padding:#{$value}px;}
+	%pt#{$value}{padding-top:#{$value}px;}
+	%pr#{$value}{padding-right:#{$value}px;}
+	%pb#{$value}{padding-bottom:#{$value}px;}
+	%pl#{$value}{padding-left:#{$value}px;}
+
+	@if $IfGenCommonStyleDefinition
+	{
+		@if $IfGenAllSelectors or index($SelectedSelectors, p#{$value}){.p#{$value}{@extend %p#{$value}}}
+
+		@if $IfGenAllSelectors or index($SelectedSelectors, pt#{$value}){.pt#{$value}{@extend %pt#{$value}}}
+
+		@if $IfGenAllSelectors or index($SelectedSelectors, pr#{$value}){.pr#{$value}{@extend %pr#{$value}}}
+
+		@if $IfGenAllSelectors or index($SelectedSelectors, pb#{$value}){.pb#{$value}{@extend %pb#{$value}}}
+
+		@if $IfGenAllSelectors or index($SelectedSelectors, pl#{$value}){.pl#{$value}{@extend %pl#{$value}}}
+
+	}
+}
+//rem数字值(暂只实现建议值和候选值)
+$TRBLPDRemData:
+//建议实现值：
+	0,1,2,3,4,5,
+	10,15,20,25,
+	30,35,40,45,50,
+	120,150,200,250,300,400,500,
+//候选值：
+	12,14,16,18,24,32,36,48,
+	6,7,8,9,11,13,
+	60,70,80,90,100,
+	27,28,54,64,72,96,81
+//备用值：（几乎不需）
+	//120,150,200,250,300,400,500。
+;
+//生成规则定义
+@each $value in $TRBLPDRemData
+{
+	%p#{$value}r{padding:#{$value}rem;}
+	%pt#{$value}r{padding-top:#{$value}rem;}
+	%pr#{$value}r{padding-right:#{$value}rem;}
+	%pb#{$value}r{padding-bottom:#{$value}rem;}
+	%pl#{$value}r{padding-left:#{$value}rem;}
+
+	@if $IfGenCommonStyleDefinition
+	{
+		@if $IfGenAllSelectors or index($SelectedSelectors, p#{$value}r){.p#{$value}r{@extend %p#{$value}r}}
+
+		@if $IfGenAllSelectors or index($SelectedSelectors, pt#{$value}r){.pt#{$value}r{@extend %pt#{$value}r}}
+
+		@if $IfGenAllSelectors or index($SelectedSelectors, pr#{$value}r){.pr#{$value}r{@extend %pr#{$value}r}}
+
+		@if $IfGenAllSelectors or index($SelectedSelectors, pb#{$value}r){.pb#{$value}r{@extend %pb#{$value}r}}
+
+		@if $IfGenAllSelectors or index($SelectedSelectors, pl#{$value}r){.pl#{$value}r{@extend %pl#{$value}r}}
+
+	}
+}
+//百分比值。（只实现建议值）
+$TRBLPDPData:
+//建议实现值：
+	20,25,10,5,
+	50,100
+//候选值：
+	//30,70,40,60,
+	//80,75,90,
+//备用值：（几乎不需）
+	//15,35,45,70。
+;
+/*
+用百分比来定义。
+水平（默认）书写模式下，
+参照其包含块 width 进行计算，
+其它情况参照 height 。
+
+不允许负值
+*/
+//生成规则定义
+@each $value in $TRBLPDPData
+{
+	%pp#{$value}{padding:#{$value}#{"%"};}
+	%ptp#{$value}{padding-top:#{$value}#{"%"};}
+	%prp#{$value}{padding-right:#{$value}#{"%"};}
+	%pbp#{$value}{padding-bottom:#{$value}#{"%"};}
+	%plp#{$value}{padding-left:#{$value}#{"%"};}
+
+	@if $IfGenCommonStyleDefinition
+	{
+		@if $IfGenAllSelectors or index($SelectedSelectors, pp#{$value}){.pp#{$value}{@extend %pp#{$value}}}
+
+		@if $IfGenAllSelectors or index($SelectedSelectors, ptp#{$value}){.ptp#{$value}{@extend %ptp#{$value}}}
+
+		@if $IfGenAllSelectors or index($SelectedSelectors, prp#{$value}){.prp#{$value}{@extend %prp#{$value}}}
+
+		@if $IfGenAllSelectors or index($SelectedSelectors, pbp#{$value}){.pbp#{$value}{@extend %pbp#{$value}}}
+
+		@if $IfGenAllSelectors or index($SelectedSelectors, plp#{$value}){.plp#{$value}{@extend %plp#{$value}}}
+
+	}
+}
+//其他值
+
+//todo em等后缀值。.pl1e{padding-left:1em;}
+//todo 其它值使用特定样式类名，或者后期用js计算。

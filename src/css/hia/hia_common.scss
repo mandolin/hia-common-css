@@ -1,0 +1,452 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*! hia_common.scss v0.0.1 | MIT License */
+//HIA CSS 框架 SCSS 通用common样式文件(标准版)
+/**
+ * HIA CSS 框架 SCSS 通用common样式文件(标准版)
+ *
+ * 样式规则的通用抽象整理和类定义
+ * 主要包括整体样式定义、盒模型、显示样式、文字样式、内容样式、高级界面样式、效果样式、响应式样式以及其它。
+ *
+ * note 标准版包含一些预计比较常用的定义。
+ *
+ * @project   HIA CSS 框架
+ * @file      hia_common.scss
+ * @version   0.0.1
+ * @package   scss
+ * @author    mandolin
+ * @copyright 2015 by mandolin
+ * @cssdoc    version 1.0-pre
+ * @license   MIT
+ *
+ * @note      以下颜色定义仅为示例，需要根据项目情况改为实际用到的值。
+ * @colordef  #fff;    白色
+ * @colordef  #808080; 标准灰色
+ *
+ * @note      以下样式规则需要根据站点实际情况选用。
+ */
+/*----------------------------------------------------------------------------------------------------*/
+/**
+ * ◎ 相关变量
+ *
+ * @section overall_variables
+ */
+$IfGenCommonStyleDefinition : true;  //生成通用样式的实际定义
+$IfGenAllSelectors          : false; //不生成所有选择器，而是按照$SelectedSelectors 指定的选择器来生成
+$SelectedSelectors          :        //指定生成的选择器列表
+(
+	//展现样式规则定义
+	n,di,db,dib,
+	df,dif,
+
+	//浮动样式规则定义
+	l,r,
+
+	//清除浮动样式规则定义
+	c,
+
+	//可见性样式规则定义
+	h,
+
+	//溢出样式规则定义
+	o,os,oa,
+
+	//位置样式规则定义
+	pr,pa,pf,t0,b0,l0,r0,
+
+	//层级样式规则定义
+	z1,z2,z3,z4,z5,z6,z7,z8,z9,z10,
+	zx1,zx2,zx3,zx4,zx5,zx6,zx7,zx8,zx9,zx10,
+	zm,zn,
+
+	//高宽样式规则定义
+	w0,w1,w2,w3,w4,w5,
+	w9,w10,w11,w12,w13,w14,w15,w16,w18,w24,w32,w36,w48,
+	w20,w25,w30,w35,w40,w50,w60,w70,w80,w90,w100,w120,w150,w200,w250,w300,w400,w500,
+	w600,w700,w800,w900,w1000,
+
+	h0,h1,h2,h3,h4,h5,
+	h9,h10,h11,h12,h13,h14,h15,h16,h18,h24,h32,h36,h48,
+	h20,h25,h30,h35,h40,h50,h60,h70,h80,h90,h100,h120,h150,h200,h250,h300,h400,h500,
+
+	w1r,w2r,w3r,w4r,w5r,
+	w9r,w10r,w11r,w12r,w13r,w14r,w15r,w16r,w18r,w24r,w32r,w36r,w48r,
+	w20r,w25r,w30r,w35r,w40r,w50r,w60r,w70r,w80r,w90r,w100r,w120r,w150r,w200r,w250r,w300r,w400r,w500r,
+	w600r,w700r,w800r,w900r,w1000r,
+
+	h1r,h2r,h3r,h4r,h5r,
+	h9r,h10r,h11r,h12r,h13r,h14r,h15r,h16r,h18r,h24r,h32r,h36r,h48r,
+	h20r,h25r,h30r,h35r,h40r,h50r,h60r,h70r,h80r,h90r,h100r,h120r,h150r,h200r,h250r,h300r,h400r,h500r,
+
+	wp100,wp50,wp20,wp25,wp10,
+	wp80,wp60,wp40,wp75,
+
+	hp100,hp50,hp20,hp25,hp10,
+	hp80,hp60,hp40,hp75,
+
+	//关联性自适应高度样式规则定义
+	ha,
+
+	//盒模型组成模式样式规则定义
+	bsbb,
+
+	//上下左右外边距规则定义
+	mha,
+
+	ml0,ml1,ml2,ml3,ml4,ml5,
+	ml10,ml15,ml20,ml25,
+	ml30,ml35,ml40,ml45,ml50,
+	ml60,ml70,ml80,ml90,ml100,
+	ml120,ml150,ml200,
+
+	mr0,mr1,mr2,mr3,mr4,mr5,
+	mr10,mr15,mr20,mr25,
+	mr30,mr35,mr40,mr45,mr50,
+	mr60,mr70,mr80,mr90,mr100,
+	mr120,mr150,mr200,
+
+	mt0,mt1,mt2,mt3,mt4,mt5,
+	mt10,mt15,mt20,mt25,
+	mt30,mt35,mt40,mt45,mt50,
+	mt60,mt70,mt80,mt90,mt100,
+	mt120,mt150,mt200,
+
+	mb0,mb1,mb2,mb3,mb4,mb5,
+	mb10,mb15,mb20,mb25,
+	mb30,mb35,mb40,mb45,mb50,
+	mb60,mb70,mb80,mb90,mb100,
+	mb120,mb150,mb200,
+
+	ml1r,ml2r,ml3r,ml4r,ml5r,
+	ml10r,ml15r,ml20r,ml25r,
+	ml30r,ml35r,ml40r,ml45r,ml50r,
+	ml60r,ml70r,ml80r,ml90r,ml100r,
+	ml120r,ml150r,ml200r,
+
+	mr1r,mr2r,mr3r,mr4r,mr5r,
+	mr10r,mr15r,mr20r,mr25r,
+	mr30r,mr35r,mr40r,mr45r,mr50r,
+	mr60r,mr70r,mr80r,mr90r,mr100r,
+	mr120r,mr150r,mr200r,
+
+	mt1r,mt2r,mt3r,mt4r,mt5r,
+	mt10r,mt15r,mt20r,mt25r,
+	mt30r,mt35r,mt40r,mt45r,mt50r,
+	mt60r,mt70r,mt80r,mt90r,mt100r,
+	mt120r,mt150r,mt200r,
+
+	mb1r,mb2r,mb3r,mb4r,mb5r,
+	mb10r,mb15r,mb20r,mb25r,
+	mb30r,mb35r,mb40r,mb45r,mb50r,
+	mb60r,mb70r,mb80r,mb90r,mb100r,
+	mb120r,mb150r,mb200r,
+
+	mlx1,mlx2,mlx3,mlx4,mlx5,
+	mlx10,mlx15,mlx20,mlx25,
+	mlx30,mlx35,mlx40,mlx45,mlx50,
+
+	mrx1,mrx2,mrx3,mrx4,mrx5,
+	mrx10,mrx15,mrx20,mrx25,
+	mrx30,mrx35,mrx40,mrx45,mrx50,
+
+	mtx1,mtx2,mtx3,mtx4,mtx5,
+	mtx10,mtx15,mtx20,mtx25,
+	mtx30,mtx35,mtx40,mtx45,mtx50,
+
+	mbx1,mbx2,mbx3,mbx4,mbx5,
+	mbx10,mbx15,mbx20,mbx25,
+	mbx30,mbx35,mbx40,mbx45,mbx50,
+
+	mlx1r,mlx2r,mlx3r,mlx4r,mlx5r,
+	mlx10r,mlx15r,mlx20r,mlx25r,
+	mlx30r,mlx35r,mlx40r,mlx45r,mlx50r,
+
+	mrx1r,mrx2r,mrx3r,mrx4r,mrx5r,
+	mrx10r,mrx15r,mrx20r,mrx25r,
+	mrx30r,mrx35r,mrx40r,mrx45r,mrx50r,
+
+	mtx1r,mtx2r,mtx3r,mtx4r,mtx5r,
+	mtx10r,mtx15r,mtx20r,mtx25r,
+	mtx30r,mtx35r,mtx40r,mtx45r,mtx50r,
+
+	mbx1r,mbx2r,mbx3r,mbx4r,mbx5r,
+	mbx10r,mbx15r,mbx20r,mbx25r,
+	mbx30r,mbx35r,mbx40r,mbx45r,mbx50r,
+
+	mlp50,mlp100,mlp20,mlp25,
+	mrp50,mrp100,mrp20,mrp25,
+	mtp50,mtp100,mtp20,mtp25,
+	mbp50,mbp100,mbp20,mbp25,
+
+	mlxp50,mlxp100,mlxp20,mlxp25,
+	mrxp50,mrxp100,mrxp20,mrxp25,
+	mtxp50,mtxp100,mtxp20,mtxp25,
+	mbxp50,mbxp100,mbxp20,mbxp25,
+
+	//上下左右内边距规则定义
+	p0,p1,p2,p3,p4,p5,
+	p10,p15,p20,p25,
+	p30,p35,p40,p45,p50,
+
+	pl0,pl1,pl2,pl3,pl4,pl5,
+	pl10,pl15,pl20,pl25,
+	pl30,pl35,pl40,pl45,pl50,
+
+	pr0,pr1,pr2,pr3,pr4,pr5,
+	pr10,pr15,pr20,pr25,
+	pr30,pr35,pr40,pr45,pr50,
+
+	pt0,pt1,pt2,pt3,pt4,pt5,
+	pt10,pt15,pt20,pt25,
+	pt30,pt35,pt40,pt45,pt50,
+
+	pb0,pb1,pb2,pb3,pb4,pb5,
+	pb10,pb15,pb20,pb25,
+	pb30,pb35,pb40,pb45,pb50,
+
+	p1r,p2r,p3r,p4r,p5r,
+	p10r,p15r,p20r,p25r,
+	p30r,p35r,p40r,p45r,p50r,
+
+	pl1r,pl2r,pl3r,pl4r,pl5r,
+	pl10r,pl15r,pl20r,pl25r,
+	pl30r,pl35r,pl40r,pl45r,pl50r,
+
+	pr1r,pr2r,pr3r,pr4r,pr5r,
+	pr10r,pr15r,pr20r,pr25r,
+	pr30r,pr35r,pr40r,pr45r,pr50r,
+
+	pt1r,pt2r,pt3r,pt4r,pt5r,
+	pt10r,pt15r,pt20r,pt25r,
+	pt30r,pt35r,pt40r,pt45r,pt50r,
+
+	pb1r,pb2r,pb3r,pb4r,pb5r,
+	pb10r,pb15r,pb20r,pb25r,
+	pb30r,pb35r,pb40r,pb45r,pb50r,
+
+	pp5,pp10,pp20,pp25,
+	plp5,plp10,plp20,plp25,
+	prp5,prp10,prp20,prp25,
+	ptp5,ptp10,ptp20,ptp25,
+	pbp5,pbp10,pbp20,pbp25,
+
+	//基本边框样式
+	bs,bt,bd,bb,
+
+	//边框宽度
+	bw1,bw2,bw3,bw4,bw5,
+	bw1r,bw2r,bw3r,bw4r,bw5r,
+
+	//边框颜色
+	dc0,dc1,dc2,dc3,dc4,dc5,dc6,dc7,dc8,dc9,
+	dcza,dczb,dczc,dczd,dcze,dczf,
+
+	dca,dcb,dcc,dce,dcf,dcg,dci,dck,dcl,dcm,dcn,dco,dcp,dcr,dcs,dct,dcv,dcw,dcy,
+
+	//边框圆角样式规则定义
+	br1,br2,br3,br4,br5,br6,br7,br8,br9,br10,
+	br1r,br2r,br3r,br4r,br5r,br6r,br7r,br8r,br9r,br10r,
+	brp20,brp25,brp10,brp50,
+
+	//背景颜色样式规则定义
+	bc0,bc1,bc2,bc3,bc4,bc5,bc6,bc7,bc8,bc9,
+	bcza,bczb,bczc,bczd,bcze,bczf,
+
+	bca,bcb,bcc,bce,bcf,bcg,bci,bck,bcl,bcm,bcn,bco,bcp,bcr,bcs,bct,bcv,bcw,bcy,
+	bcdb,bcdcy,bcdgrd,bcdgr,bcdg,bcdk,bcdmt,bcdog,bcdor,bcdoc,bcdr,bcdsm,bcdsg,bcdsb,bcdsgr,bcdtq,bcdv,
+	bclb,bclcy,bclc,bclgrdy,bclgr,bclg,bclpk,bclsm,bclsg,bclsgr,bclstbbly,
+
+	//背景填充样式规则定义
+	brrx,brry,brnr,brrd,brs,
+
+	//背景滚动固定样式规则定义
+	baf,bal,
+
+	//背景位置样式规则定义
+	bpl,bpc,bpr,bptl,bptc,bptr,bpbl,bpbc,bpbr,
+
+	//背景起始位置样式规则定义
+	bob,boc,
+
+	//背景图像裁剪区域样式规则定义
+	bgcp,bgcc,bgct,
+
+	//背景图像尺寸样式规则定义
+	bsp20,bsp25,bsp10,bsp50,
+	bsc,bsct,bss
+
+	//前景颜色样式规则定义
+	c0,c1,c2,c3,c4,c5,c6,c7,c8,c9,
+	cza,czb,czc,czd,cze,czf,
+
+	ca,cb,cc,ce,cf,cg,ci,ck,cl,cm,cn,co,cp,cr,cs,ct,cv,cw,cy,
+
+	//透明度样式规则定义
+	o1,o2,o3,o4,o5,o6,o7,o8,o9,
+	of,
+
+	//基本字体样式规则定义
+	fzss,fzs,fzcd,fsss,fss,
+	fa,fc,fcs,fcsm,fcn,fv,fg,ftnr,
+	fy,fx,fh,fk,fs,ff,
+
+	//字体样式、字体粗细等样式规则定义
+	b,i,
+
+	//字体尺寸样式规则定义
+	f0,f9,f10,f11,f12,f13,f14,f15,f16,f18,f20,f24,f28,f32,f36,f48,
+    f9r,f10r,f11r,f12r,f13r,f14r,f15r,f16r,f18r,f20r,f24r,f28r,f32r,f36r,f48r,
+    f3qr,f7er,f1r,f9er,f5qr,f3hr,f7qr,f2r,f9qr,f3r,
+
+
+	//空白字符样式规则定义
+	wsp,wsnw,wspw,wspl,
+
+	//换行样式规则定义
+	wb,wn,
+
+	//水平对齐样式规则定义
+	tl,tc,tr,tj,
+
+	//单词间隔样式规则定义
+	wds9,wds10,wds11,wds12,wds13,wds14,wds15,wds16,wds18,wds20,wds24,wds28,wds32,wds36,wds48,
+	wds9r,wds10r,wds11r,wds12r,wds13r,wds14r,wds15r,wds16r,wds18r,wds20r,wds24r,wds28r,wds32r,wds36r,wds48r,
+
+	wdsx3,wdsx4, wdsx5, wdsx6, wdsx7, wdsx8, wdsx9, wdsx10, wdsx12, wdsx16,
+	wdsx3r,wdsx4r, wdsx5r, wdsx6r, wdsx7r, wdsx8r, wdsx9r, wdsx10r, wdsx12r, wdsx16r,
+
+	//字母间隔样式规则定义
+	//ls9,ls10,ls11,ls12,ls13,ls14,ls15,ls16,ls18,ls20,ls24,ls28,ls32,ls36,ls48,
+	//ls9r,ls10r,ls11r,ls12r,ls13r,ls14r,ls15r,ls16r,ls18r,ls20r,ls24r,ls28r,ls32r,ls36r,ls48r,
+
+	lsx1,lsx2,lsx3,lsx4,lsx5,
+	lsx1r,lsx2r,lsx3r,lsx4r,lsx5r,
+
+	//文本缩进样式规则定义
+	ti18,ti20,ti24,ti28,ti32,ti36,ti48,ti22,ti26,ti30,ti40,ti56,ti64,ti72,ti96,
+	ti18r,ti20r,ti24r,ti28r,ti32r,ti36r,ti48r,ti22r,ti26r,ti30r,ti40r,ti56r,ti64r,ti72r,ti96r,
+
+	//垂直对齐样式规则定义
+	vs,vsp,vtt,vtb,vm,vt,vb,
+
+	//行高样式规则定义
+    lh9,lh10,lh11,lh12,lh13,lh14,lh15,lh16,lh18,lh20,lh24,lh28,lh32,lh36,lh48,
+    lh20,lh25,lh30,lh35,lh40,lh45,lh50,lh60,lh70,lh80,lh90,lh100,
+
+	lh9r,lh10r,lh11r,lh12r,lh13r,lh14r,lh15r,lh16r,lh18r,lh20r,lh24r,lh28r,lh32r,lh36r,lh48r,
+    lh20r,lh25r,lh30r,lh35r,lh40r,lh45r,lh50r,lh60r,lh70r,lh80r,lh90r,lh100r,
+
+    lhn100,lhn120,lhn140,lhn150,lhn180,lhn200,lhn110,lhn130,
+
+	//文本装饰综合（文本装饰线型）样式规则定义
+	u,tol,tlt,
+
+	//文本装饰风格样式规则定义
+	tdb,tdt,tds,twv,
+
+	//前景颜色样式规则定义
+	tc0,tc1,tc2,tc3,tc4,tc5,tc6,tc7,tc8,tc9,
+	tcza,tczb,tczc,tczd,tcze,tczf,
+
+	tca,tcb,tcc,tce,tcf,tcg,tci,tck,tcl,tcm,tcn,tco,tcp,tcr,tcs,tct,tcv,tcw,tcy,
+
+	//文本流方向样式规则定义
+	drtl,
+
+	//unicode-bidi样式规则定义
+	ue,ub,
+
+	//writing-mode样式规则定义
+	wvr,wvl,
+
+	//列表项目位置样式规则定义
+	li,
+
+	//列表项类型样式规则定义
+	lc,ls,ldc,llr,lur,lla,lua,ln,lci,llg,lhb,lll,lul,
+
+	//表格布局算法样式规则定义
+	tlf,
+
+	//表格边框合并样式规则定义
+	tbcc,
+
+	//表格边框间距样式规则定义
+	tbs1,tbs2,tbs3,tbs4,tbs5,tbs10,tbs20,
+	tbs1r,tbs2r,tbs3r,tbs4r,tbs5r,tbs10r,tbs20r,
+
+	//表格caption样式规则定义
+	tbcsb,
+
+	//文本溢出显示方式样式规则定义
+	toe,
+
+	//基本轮廓样式
+	osd,ot,od,ob,
+
+	//轮廓宽度
+	ow1,ow2,ow3,ow4,ow5,
+	ow1r,ow2r,ow3r,ow4r,ow5r,
+
+	//轮廓颜色
+	oc0,oc1,oc2,oc3,oc4,oc5,oc6,oc7,oc8,oc9,
+	ocza,oczb,oczc,oczd,ocze,oczf,
+
+	oca,ocb,occ,oce,ocf,ocg,oci,ock,ocl,ocm,ocn,oco,ocp,ocr,ocs,oct,ocv,ocw,ocy,
+
+	//光标样式规则定义
+	sd,sn,
+	sh,sp,sw,scm,spg,
+	st,sv,sch,scl,
+	sm,sc,snd,sna,sg,sgb,
+	ser,snr,ssr,swr,sner,snwr,sser,sswr,
+	scr,srr,
+	szi,szo,
+
+	//缩放样式规则定义
+	zp20,zp25,zp10,zp40,zp60,zp80,zp75,zp90,zp50,zp125,zp150,zp200,zp250,zp300,zp400,zp500,
+
+	//尺寸调节样式规则定义
+	rb,rh,rv,
+
+	//文本选择模式样式规则定义
+	usn,usa,use,
+
+	//事件指向样式规则定义
+	pen,
+
+	//伸缩盒一般性样式规则定义
+	fla,fln,
+
+	//扩展比例样式规则定义
+	fg1,fg2,fg3,fg4,fg5,fg6,fg7,fg8,fg9,fg10,
+
+	//扩展比例样式规则定义
+	fs0,fs2,fs3,fs4,fs5,fs6,fs7,fs8,fs9,fs10,
+
+	//子元素排列方向样式规则定义
+	fdrr,fdc,fdcr,
+
+	//子元素换行选项样式规则定义
+	fww,fwwr,
+
+	//横轴对齐方式样式规则定义
+	acfs,acfe,acc,acsb,acsa,
+
+	//纵轴对齐方式样式规则定义
+	aifs,aife,aic,aib,
+
+	//flex子项单独纵轴对齐样式规则定义
+	asfs,asfe,asc,asb,ass,
+
+	//弹性盒子元素横轴对齐样式规则定义
+	jcfe,jcc,jcsb,jcsa,
+
+	//盒模型对象子元素出現順序样式规则定义
+	od1,od2,od3,od4,od5,od6,od7,od8,od9,od10,
+	odx1,odx2,odx3,odx4,odx5,odx6,odx7,odx8,odx9,odx10,
+	odm,odn,
+
+);
+/*----------------------------------------------------------------------------------------------------*/
+@import "_sys";//导入common通用样式定义（架构文件）

@@ -1,0 +1,34 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//◆ 透明度样式规则定义
+/**
+ * ◆ 透明度样式规则定义
+ *
+ * @subsubsection opacity_style_definition
+ */
+//数字值(暂只实现建议值和备选值)
+$OpacityData:
+//建议实现值：
+	1,2,3,4,5,6,7,8,9,
+//候选值：
+	25,75,95,"05"
+//备用值：（几乎不需）
+;
+//生成规则定义
+@each $value in $OpacityData
+{
+	%o#{$value}{opacity:#{"0."}#{$value};}
+	@if $IfGenCommonStyleDefinition
+	{
+		@if $IfGenAllSelectors or index($SelectedSelectors, o#{$value}){.o#{$value}{@extend %o#{$value}}}
+	}
+}
+//其它值
+%of{opacity:1;}
+@if $IfGenCommonStyleDefinition
+{
+	@if $IfGenAllSelectors or index($SelectedSelectors, of){.of{@extend %of}}
+}
+
+//todo 其它值使用特定样式类名，或者后期用js计算。

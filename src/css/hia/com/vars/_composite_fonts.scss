@@ -1,0 +1,32 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//■ 复合字体
+/**
+ * ■ 复合字体
+ *
+ * todo 待补充完善（增加中文类的复合字体等）
+ *
+ * @subsection composite_fonts
+ */
+//英文无衬线字体集合
+$FONT_SANS_SERIF :  -apple-system,
+                    BlinkMacSystemFont,
+                    'avenir next',
+                    avenir,
+                    'helvetica neue',
+                    helvetica,
+                    ubuntu,
+                    roboto,
+                    noto,
+                    'segoe ui',
+                    arial,
+                    sans-serif;
+//英文衬线字体集合
+$FONT_SERIF :   georgia,
+                times,
+                serif;
+//英文代码字体集合
+$FONT_CODE :    Consolas,
+                monaco,
+                monospace;

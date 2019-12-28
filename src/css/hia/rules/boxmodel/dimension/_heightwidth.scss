@@ -1,0 +1,128 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//◆ 高宽样式规则定义
+/**
+ * ◆ 高宽样式规则定义
+ *
+ * @subsubsection heightwidht_style_definition
+ */
+//数字值(暂只实现建议值和候选值)
+$HWData:
+//建议实现值：
+	10,15,20,25,30,35,40,45,50,
+	60,70,80,90,100,120,150,200,
+	250,300,400,500,
+//候选值：
+	0,1,2,3,4,5,
+	12,14,16,18,24,32,36,48,
+	6,7,8,9,11,13,
+	600,700,800,900,1000
+//备用值：（几乎不需）
+	//27,28,81,
+	//54,64,72,96
+;
+//生成规则定义
+@each $value in $HWData
+{
+  %h#{$value}{height:#{$value}px;}
+  %w#{$value}{width:#{$value}px;}
+
+  @if $IfGenCommonStyleDefinition
+  {
+	@if $IfGenAllSelectors or index($SelectedSelectors, h#{$value}){.h#{$value}{@extend %h#{$value}}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, w#{$value}){.w#{$value}{@extend %w#{$value}}}
+  }
+}
+//rem值(暂只实现建议值和候选值)
+$HWRemData:
+//建议实现值：
+	10,15,20,25,30,35,40,45,50,
+	60,70,80,90,100,120,150,200,
+	250,300,400,500,
+//候选值：
+	0,1,2,3,4,5,
+	12,14,16,18,24,32,36,48,
+	6,7,8,9,11,13,
+	600,700,800,900,1000
+//备用值：（几乎不需）
+	//27,28,81,
+	//54,64,72,96
+;
+//生成规则定义
+@each $value in $HWRemData
+{
+  %h#{$value}r{height:#{$value}rem;}
+  %w#{$value}r{width:#{$value}rem;}
+
+  @if $IfGenCommonStyleDefinition
+  {
+	@if $IfGenAllSelectors or index($SelectedSelectors, h#{$value}r){.h#{$value}r{@extend %h#{$value}r}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, w#{$value}r){.w#{$value}r{@extend %w#{$value}r}}
+  }
+}
+//百分比值。(暂只实现建议值和候选值)
+$HWPData:
+//建议实现值：
+	100,50,20,25,10,
+//候选值：
+	80,75,90,30,70,40,60
+//备用值：（几乎不需）
+	//5,80,75,90;
+;
+//生成规则定义
+@each $value in $HWPData
+{
+  %hp#{$value}{height:#{$value}#{"%"};}
+  %wp#{$value}{width:#{$value}#{"%"};}
+
+  @if $IfGenCommonStyleDefinition
+  {
+	@if $IfGenAllSelectors or index($SelectedSelectors, hp#{$value}){.hp#{$value}{@extend %hp#{$value}}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, wp#{$value}){.wp#{$value}{@extend %wp#{$value}}}
+  }
+}
+//其他值
+//分数型（Fraction）rem值
+/*
+    h:half    二分之一
+    t:third   三分之一
+    q:quarter 四分之一
+    f:fifth   五分之一
+    s:sixth   六分之一
+    e:eighth  八分之一
+*/
+$HWFRemData:
+(
+    '3qr'   : (Abbr:'3qr',Value:'.75'),
+    '7er'   : (Abbr:'7er',Value:'.875'),
+    '9er'   : (Abbr:'9er',Value:'1.125'),
+    '5qr'   : (Abbr:'5qr',Value:'1.25'),
+    '3hr'   : (Abbr:'3hr',Value:'1.5'),
+    '7qr'   : (Abbr:'7qr',Value:'1.75'),
+    '9qr'   : (Abbr:'9qr',Value:'2.25'),
+    '7hr'   : (Abbr:'7hr',Value:'3.5'),
+    '9hr'   : (Abbr:'9hr',Value:'4.5'),
+);
+// 生成规则定义
+@each $var, $value in $HWFRemData
+{
+    $a:map-get($value, Abbr);
+    $v:map-get($value, Value);
+
+    %f#{$a}
+	{
+		font-size: #{$v}rem;
+	}
+	@if $IfGenCommonStyleDefinition and ($IfGenAllSelectors or index($SelectedSelectors, f#{$a}))
+	{
+		.f#{$a}
+		{
+			@extend %f#{$a};
+		}
+	}
+}
+
+//todo em等后缀值。.w1e{width:1em;}。
+//todo 其它值使用特定样式类名，或者后期用js计算。
+//todo 最大最小高宽以及其它值使用特定样式类名，或者后期用js计算。

@@ -1,0 +1,54 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//◆ 展现样式规则定义
+/**
+ * ◆ 展现样式规则定义
+ *
+ * @subsubsection display_style_definition
+ */
+$DisplayData:
+(
+	//基本规则
+	n   : none,          //隐藏对象。与visibility属性的hidden值不同，其不为被隐藏的对象保留其物理空间。label 常用
+	di  : inline,        //指定对象为内联元素。label 常用
+	db  : block,         //指定对象为块元素。label 常用
+	dli : list-item,     //指定对象为列表项目。
+	dib : inline-block,  //指定对象为内联块元素。（CSS2）label 常用
+	//其它规则
+	dt    : table,               //指定对象作为块元素级的表格。类同于html标签<table>（CSS2）
+	dit   : inline-table,        //指定对象作为内联元素级的表格。类同于html标签<table>（CSS2）
+	dtcp  : table-caption,       //指定对象作为表格标题。类同于html标签<caption>（CSS2）
+	dtc   : table-cell,          //指定对象作为表格单元格。类同于html标签<td>（CSS2）
+	dtr   : table-row,           //指定对象作为表格行。类同于html标签<tr>（CSS2）
+	dtrg  : table-row-group,     //指定对象作为表格行组。类同于html标签<tbody>（CSS2）
+	dtcl : table-column,        //指定对象作为表格列。类同于html标签<col>（CSS2）
+	dtcg  : table-column-group,  //指定对象作为表格列组显示。类同于html标签<colgroup>（CSS2）
+	dthg  : table-header-group,  //指定对象作为表格标题组。类同于html标签<thead>（CSS2）
+	dtfg  : table-footer-group,  //指定对象作为表格脚注组。类同于html标签<tfoot>（CSS2）
+	//css3规则
+	dri : run-in,  //根据上下文，决定对象是内联对象还是块级对象。（CSS3）
+);
+//生成规则定义
+@each $var, $value in $DisplayData
+{
+	%#{$var}
+	{
+		display:$value
+	}
+
+	@if $IfGenCommonStyleDefinition and ($IfGenAllSelectors or index($SelectedSelectors, $var))
+	{
+		.#{$var}
+		{
+			@extend %#{$var};
+        }
+	}
+}
+%df{display:box;display:flexbox;display:flex;} // 将对象作为弹性伸缩盒显示。label 常用
+%dif{display:inline-box;display:inline-flexbox;display:inline-flex;} // 将对象作为内联块级弹性伸缩盒显示。label 常用
+@if $IfGenCommonStyleDefinition
+{
+	@if $IfGenAllSelectors or index($SelectedSelectors, df ){.df {@extend %df }}
+	@if $IfGenAllSelectors or index($SelectedSelectors, dif){.dif{@extend %dif}}
+}

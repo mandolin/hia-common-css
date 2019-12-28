@@ -1,0 +1,37 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//◆ 清除浮动样式规则定义
+/**
+ * ◆ 清除浮动样式规则定义
+ *
+ * @subsubsection clear_style_definition
+ */
+//基本规则
+%clrn{clear:none ;}//允许两边都可以有浮动对象。默认值，可不定义。
+%clrb{clear:both ;}//不允许有浮动对象
+%clrl{clear:left ;}//不允许左边有浮动对象
+%clrr{clear:right;}//不允许右边有浮动对象
+
+@if $IfGenCommonStyleDefinition
+{
+	//.clrn{@extend %clrn}
+	@if $IfGenAllSelectors or index($SelectedSelectors, clrb){.clrb{@extend %clrb}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, clrl){.clrl{@extend %clrl}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, clrr){.clrr{@extend %clrr}}
+}
+
+//清除浮动(加在容器上) label 常用
+@mixin hia-c{
+	&:before,&:after{content:"";display: table;}
+	&:after{clear:both;}
+	*zoom:1;//针对 IE 6/7 (触发布局trigger hasLayout)
+}
+%c
+{
+    @include hia-c;
+}
+@if $IfGenCommonStyleDefinition
+{
+	@if $IfGenAllSelectors or index($SelectedSelectors, c){.c{@extend %c}}
+}

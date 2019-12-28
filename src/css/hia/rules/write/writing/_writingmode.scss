@@ -1,0 +1,28 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//◆ writing-mode样式规则定义
+/**
+ * ◆ writing-mode样式规则定义
+ *
+ * @subsubsection writingmode_style_definition
+ */
+//特定值
+// 水平方向自上而下的书写方式。即 left-right-top-bottom（类似IE私有值lr-tb）(默认值，可不定义)
+@mixin hia-wht{
+	writing-mode:horizontal-tb;writing-mode:lr-tb;
+}
+// 垂直方向自右而左的书写方式。即 top-bottom-right-left（类似IE私有值tb-rl）
+@mixin hia-wvr{
+	writing-mode:vertical-rl;writing-mode:tb-rl;
+}
+
+%wht{@include hia-wht;}
+%wvr{@include hia-wvr;}
+%wvl{writing-mode:vertical-lr;} //严格按照 <' direction '> 属性的值重排序。忽略隐式双向运算规则。
+@if $IfGenCommonStyleDefinition
+{
+	@if $IfGenAllSelectors or index($SelectedSelectors, wht){.wht{@extend %wht}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, wvr){.wvr{@extend %wvr}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, wvl){.wvl{@extend %wvl}}
+}

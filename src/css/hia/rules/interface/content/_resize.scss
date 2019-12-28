@@ -1,0 +1,21 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//◆ 尺寸调节样式规则定义
+/**
+ * ◆ 尺寸调节样式规则定义
+ *
+ * @subsubsection resize_style_definition
+ */
+//特定值
+%rn{resize:normal;} //不允许用户调整元素大小。(默认值，可不定义)
+%rb{resize:both;} //用户可以调节元素的宽度和高度。
+%rh{resize:horizontal;} //用户可以调节元素的宽度
+%rv{resize:vertical;} //用户可以调节元素的高度。
+@if $IfGenCommonStyleDefinition
+{
+	@if $IfGenAllSelectors or index($SelectedSelectors, rn){.rn{@extend %rn}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, rb){.rb{@extend %rb}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, rh){.rh{@extend %rh}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, rv){.rv{@extend %rv}}
+}

@@ -1,0 +1,31 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//◆ 扩展比例样式规则定义
+/**
+ * ◆ 扩展比例样式规则定义
+ *
+ * @subsubsection flexgrow_style_definition
+ */
+//像素间距(暂只实现建议值)
+$FGData:
+//建议实现值：
+	0,//(默认值，可不定义)
+	1,2,3,4,5,
+	6,7,8,9,10,
+//候选值：
+	//15,20,25
+	//11,12,13,14,16,17,18,19
+//备用值：（几乎不需）
+	//30,35,40,45,50,
+;
+//生成规则定义
+@each $value in $FGData
+{
+	%fg#{$value}{flex-grow:#{$value};}
+
+	@if $IfGenCommonStyleDefinition
+	{
+		@if $IfGenAllSelectors or index($SelectedSelectors, fg#{$value}){.fg#{$value}{@extend %fg#{$value}}}
+	}
+}

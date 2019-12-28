@@ -1,0 +1,46 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//◆ 背景图像尺寸样式规则定义
+/**
+ * ◆ 背景图像尺寸样式规则定义
+ *
+ * @subsubsection bgsize_style_definition
+ */
+//像素值（暂无）
+//rem值（暂无）
+//百分比值。（只实现建议值）
+$BGSizePData:
+//建议实现值：
+	20,25,10,
+	50
+//候选值：
+	//30,70,40,60,
+	//80,75,90,
+//备用值：（几乎不需）
+	//15,35,45,70。
+;
+//生成规则定义（暂只实现双参数值）
+@each $value in $BGSizePData
+{
+	%bsp#{$value}{background-size:#{$value}#{"%"} #{$value}#{"%"};}
+
+	@if $IfGenCommonStyleDefinition
+	{
+		@if $IfGenAllSelectors or index($SelectedSelectors, bsp#{$value}){.bsp#{$value}{@extend %bsp#{$value}}}
+	}
+
+}
+//特定值
+%bsa{background-size:auto}  // 背景图像的真实大小。 (默认值，可不定义)
+%bsc{background-size:cover} // 将背景图像等比缩放到完全覆盖容器，背景图像有可能超出容器。
+%bsct{background-size:contain} // 将背景图像等比缩放到宽度或高度与容器的宽度或高度相等，背景图像始终被包含在容器内。
+%bss{background-size:100% 100%} //stretch
+@if $IfGenCommonStyleDefinition
+{
+	@if $IfGenAllSelectors or index($SelectedSelectors, bsa){.bsa{@extend %bsa}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, bsc){.bsc{@extend %bsc}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, bsct){.bsct{@extend %bsct}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, bss){.bss{@extend %bss}}
+
+}

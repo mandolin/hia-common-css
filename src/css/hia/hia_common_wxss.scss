@@ -1,0 +1,263 @@
+@charset "UTF-8";
+/*! hia_common_wxss.scss v0.0.1 | MIT License */
+//HIA CSS 框架 SCSS 通用common wxss样式文件(wxss微信小程序的特定样式)
+/**
+ * HIA CSS 框架 SCSS 通用common wxss样式文件(wxss微信小程序的特定样式)
+ *
+ * 样式规则的通用抽象整理和类定义
+ * 主要包括整体样式定义、盒模型、显示样式、文字样式、内容样式、高级界面样式、效果样式、响应式样式以及其它。
+ *
+ * note 最简版只包含最可能用到的定义。
+ *
+ * @project   HIA CSS 框架
+ * @file      hia_common_wxss.scss
+ * @version   0.0.1
+ * @package   scss
+ * @author    mandolin
+ * @copyright 2015 by mandolin
+ * @cssdoc    version 1.0-pre
+ * @license   MIT
+ *
+ * @note      以下颜色定义仅为示例，需要根据项目情况改为实际用到的值。
+ * @colordef  #fff;    白色
+ * @colordef  #808080; 标准灰色
+ *
+ * @note      以下样式规则需要根据站点实际情况选用。
+ */
+/*----------------------------------------------------------------------------------------------------*/
+/**
+ * ◎ 相关变量
+ *
+ * @section overall_variables
+ */
+$IfGenWxssStyleDefinition : true;  //生成通用Wxss样式的实际定义
+// todo 前期全部生成，后期如需要可考虑增加按需生成（以便生成各种针对性的版本:hia_common_wxss、hia_common_wxss_tiny.scss、hia_common_wxss_full.scss）
+/*
+    hia_common_wxss_tiny.scss: 全部的通用Wxss样式+适用于微信小程序最基本的Common样式
+    hia_common_wxss:           全部的通用Wxss样式+适用于微信小程序最常用的Common样式
+    hia_common_wxss_full.scss: 全部的通用Wxss样式+所有适用于微信小程序的Common样式
+*/
+//$IfGenAllWxssSelectors          : false; //不生成所有选择器，而是按照$SelectedWxssSelectors 指定的选择器来生成
+
+/*----------------------------------------------------------------------------------------------------*/
+@import "ext/_wxss";//导入Wxss通用样式定义（架构文件）
+
+//以下生成基本的通用样式
+$IfGenCommonStyleDefinition : true;  //生成通用样式的实际定义
+
+// todo 后期如需要可考虑增加按需生成（以便生成各种针对性的版本:hia_common_wxss、hia_common_wxss_tiny.scss、hia_common_wxss_full.scss）
+$IfGenAllSelectors          : false; //不生成所有选择器，而是按照$SelectedSelectors 指定的选择器来生成
+$SelectedSelectors          :        //指定生成的选择器列表
+(
+	//展现样式规则定义
+	n,di,db,dib,
+	df,dif,
+
+	//浮动样式规则定义
+	l,r,
+
+	//清除浮动样式规则定义
+	c,
+
+	//可见性样式规则定义
+	h,
+
+	//溢出样式规则定义
+	o,os,oa,
+
+	//位置样式规则定义
+	pr,pa,pf,t0,b0,l0,r0,
+
+    //层级样式规则定义
+	z1,z2,z3,z4,z5,z6,z7,z8,z9,z10,
+	zx1,zx2,zx3,zx4,zx5,zx6,zx7,zx8,zx9,zx10,
+	zm,zn,
+
+	hp100,hp50,hp20,hp25,hp10,
+	hp80,hp60,hp40,hp75,
+
+	//关联性自适应高度样式规则定义
+	ha,
+
+	//盒模型组成模式样式规则定义
+	bsbb,
+
+	//上下左右外边距规则定义
+    mha,
+	mlp50,mlp100,mlp20,mlp25,
+	mrp50,mrp100,mrp20,mrp25,
+	mtp50,mtp100,mtp20,mtp25,
+	mbp50,mbp100,mbp20,mbp25,
+
+	mlxp50,mlxp100,mlxp20,mlxp25,
+	mrxp50,mrxp100,mrxp20,mrxp25,
+	mtxp50,mtxp100,mtxp20,mtxp25,
+	mbxp50,mbxp100,mbxp20,mbxp25,
+
+	//上下左右内边距规则定义
+	pp5,pp10,pp20,pp25,
+	plp5,plp10,plp20,plp25,
+	prp5,prp10,prp20,prp25,
+	ptp5,ptp10,ptp20,ptp25,
+	pbp5,pbp10,pbp20,pbp25,
+
+	//基本边框样式
+	bs,bt,bd,bb,
+
+	//边框颜色
+	dc0,dc1,dc2,dc3,dc4,dc5,dc6,dc7,dc8,dc9,
+	dcza,dczb,dczc,dczd,dcze,dczf,
+
+	dca,dcb,dcc,dce,dcf,dcg,dci,dck,dcl,dcm,dcn,dco,dcp,dcr,dcs,dct,dcv,dcw,dcy,
+
+	//边框圆角样式规则定义
+	brp20,brp25,brp10,brp50,
+
+	//背景颜色样式规则定义
+	bc0,bc1,bc2,bc3,bc4,bc5,bc6,bc7,bc8,bc9,
+	bcza,bczb,bczc,bczd,bcze,bczf,
+
+	bca,bcb,bcc,bce,bcf,bcg,bci,bck,bcl,bcm,bcn,bco,bcp,bcr,bcs,bct,bcv,bcw,bcy,
+	bcdb,bcdcy,bcdgrd,bcdgr,bcdg,bcdk,bcdmt,bcdog,bcdor,bcdoc,bcdr,bcdsm,bcdsg,bcdsb,bcdsgr,bcdtq,bcdv,
+	bclb,bclcy,bclc,bclgrdy,bclgr,bclg,bclpk,bclsm,bclsg,bclsgr,bclstbbly,
+
+	//背景填充样式规则定义
+	brrx,brry,brnr,brrd,brs,
+
+	//背景滚动固定样式规则定义
+	baf,bal,
+
+	//背景位置样式规则定义
+	bpl,bpc,bpr,bptl,bptc,bptr,bpbl,bpbc,bpbr,
+
+	//背景起始位置样式规则定义
+	bob,boc,
+
+	//背景图像裁剪区域样式规则定义
+	bgcp,bgcc,bgct,
+
+	//背景图像尺寸样式规则定义
+	bsp20,bsp25,bsp10,bsp50,
+	bsc,bsct,bss
+
+	//前景颜色样式规则定义
+	c0,c1,c2,c3,c4,c5,c6,c7,c8,c9,
+	cza,czb,czc,czd,cze,czf,
+
+	ca,cb,cc,ce,cf,cg,ci,ck,cl,cm,cn,co,cp,cr,cs,ct,cv,cw,cy,
+
+	//透明度样式规则定义
+	o1,o2,o3,o4,o5,o6,o7,o8,o9,
+    of,
+
+	//字体样式、字体粗细等样式规则定义
+	b,i,
+
+	//空白字符样式规则定义
+	wsp,wsnw,wspw,wspl,
+
+	//换行样式规则定义
+	wb,wn,
+
+	//水平对齐样式规则定义
+	tl,tc,tr,tj,
+
+	//垂直对齐样式规则定义
+	vs,vsp,vtt,vtb,vm,vt,vb,
+
+	//行高样式规则定义
+    lhn100,lhn120,lhn140,lhn150,lhn180,lhn200,lhn110,lhn130,
+
+	//文本装饰综合（文本装饰线型）样式规则定义
+	u,tol,tlt,
+
+	//文本装饰风格样式规则定义
+	tdb,tdt,tds,twv,
+
+	//前景颜色样式规则定义
+	tc0,tc1,tc2,tc3,tc4,tc5,tc6,tc7,tc8,tc9,
+	tcza,tczb,tczc,tczd,tcze,tczf,
+
+	tca,tcb,tcc,tce,tcf,tcg,tci,tck,tcl,tcm,tcn,tco,tcp,tcr,tcs,tct,tcv,tcw,tcy,
+
+	//文本流方向样式规则定义
+	drtl,
+
+	//unicode-bidi样式规则定义
+	ue,ub,
+
+	//writing-mode样式规则定义
+	wvr,wvl,
+
+	//列表项目位置样式规则定义
+	li,
+
+	//列表项类型样式规则定义
+	lc,ls,ldc,llr,lur,lla,lua,ln,lci,llg,lhb,lll,lul,
+
+	//表格布局算法样式规则定义
+	tlf,
+
+	//表格边框合并样式规则定义
+	tbcc,
+
+	//表格caption样式规则定义
+	tbcsb,
+
+	//文本溢出显示方式样式规则定义
+	toe,
+
+	//基本轮廓样式
+	osd,ot,od,ob,
+
+	//轮廓颜色
+	oc0,oc1,oc2,oc3,oc4,oc5,oc6,oc7,oc8,oc9,
+	ocza,oczb,oczc,oczd,ocze,oczf,
+
+	oca,ocb,occ,oce,ocf,ocg,oci,ock,ocl,ocm,ocn,oco,ocp,ocr,ocs,oct,ocv,ocw,ocy,
+
+	//缩放样式规则定义
+	zp20,zp25,zp10,zp40,zp60,zp80,zp75,zp90,zp50,zp125,zp150,zp200,zp250,zp300,zp400,zp500,
+
+	//尺寸调节样式规则定义
+	rb,rh,rv,
+
+	//文本选择模式样式规则定义
+	usn,usa,use,
+
+	//伸缩盒一般性样式规则定义
+	fla,fln,
+
+	//扩展比例样式规则定义
+	fg1,fg2,fg3,fg4,fg5,fg6,fg7,fg8,fg9,fg10,
+
+	//扩展比例样式规则定义
+	fs0,fs2,fs3,fs4,fs5,fs6,fs7,fs8,fs9,fs10,
+
+	//子元素排列方向样式规则定义
+	fdrr,fdc,fdcr,
+
+	//子元素换行选项样式规则定义
+	fww,fwwr,
+
+	//横轴对齐方式样式规则定义
+	acfs,acfe,acc,acsb,acsa,
+
+	//纵轴对齐方式样式规则定义
+	aifs,aife,aic,aib,
+
+	//flex子项单独纵轴对齐样式规则定义
+	asfs,asfe,asc,asb,ass,
+
+	//弹性盒子元素横轴对齐样式规则定义
+	jcfe,jcc,jcsb,jcsa,
+
+	//盒模型对象子元素出現順序样式规则定义
+	od1,od2,od3,od4,od5,od6,od7,od8,od9,od10,
+	odx1,odx2,odx3,odx4,odx5,odx6,odx7,odx8,odx9,odx10,
+	odm,odn,
+
+);
+
+/*----------------------------------------------------------------------------------------------------*/
+@import "_sys";//导入common通用样式定义（架构文件）

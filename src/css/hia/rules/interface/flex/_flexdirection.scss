@@ -1,0 +1,21 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//◆ 子元素排列方向样式规则定义
+/**
+ * ◆ 子元素排列方向样式规则定义
+ *
+ * @subsubsection flexdirection_style_definition
+ */
+//特定值
+%fdr{flex-direction:row;} // 主轴与行内轴方向作为默认的书写模式。即横向从左到右排列（左对齐）。 (默认值，可不定义)
+%fdrr{flex-direction:row-reverse;} // 对齐方式与row相反。
+%fdc{flex-direction:column;} // 主轴与块轴方向作为默认的书写模式。即纵向从上往下排列（顶对齐）。
+%fdcr{flex-direction:column-reverse;} // 对齐方式与column相反。
+@if $IfGenCommonStyleDefinition
+{
+	@if $IfGenAllSelectors or index($SelectedSelectors, fdr){.fdr{@extend %fdr}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, fdrr){.fdrr{@extend %fdrr}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, fdc){.fdc{@extend %fdc}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, fdcr){.fdcr{@extend %fdcr}}
+}

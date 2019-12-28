@@ -1,0 +1,56 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//◆ 文本装饰颜色样式规则定义
+/**
+ * ◆ 文本装饰颜色样式规则定义
+ *
+ * @subsubsection textdecorationcolor_style_definition
+ */
+/*
+建议实现值：
+	基本灰度数值：0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F
+候选值：
+	双数灰度数值：01.......fe
+	16个基本颜色关键字 Basic color keywords
+	拓展颜色关键字 Extended color keywords
+*/
+$TDColorNData:0,1,2,3,4,5,6,7,8,9;
+$TDColorLData:a,b,c,d,e,f;
+//生成规则定义
+//单数字灰度值
+@each $value in $TDColorNData
+{
+	%tc#{$value}{text-decoration-color:#{"#"}#{$value}#{$value}#{$value};}
+	@if $IfGenCommonStyleDefinition
+	{
+		@if $IfGenAllSelectors or index($SelectedSelectors, tc#{$value}){.tc#{$value}{@extend %tc#{$value}}}
+	}
+}
+//单数字灰度值（16进制后6位字母）
+@each $value in $TDColorLData
+{
+	%tcz#{$value}{text-decoration-color:#{"#"}#{$value}#{$value}#{$value};}
+	@if $IfGenCommonStyleDefinition
+	{
+		@if $IfGenAllSelectors or index($SelectedSelectors, tcz#{$value}){.tcz#{$value}{@extend %tcz#{$value}}}
+	}
+}
+//颜色关键字
+@each $var, $value in $COLORS
+{
+    $a:map-get($value, Abbr);
+    $v:map-get($value, Value);
+
+    %tc#{$a}
+	{
+		text-decoration-color:$v;
+	}
+	@if $IfGenCommonStyleDefinition and ($IfGenAllSelectors or index($SelectedSelectors, tc#{$a}))
+	{
+		.tc#{$a}
+		{
+			@extend %tc#{$a};
+		}
+	}
+}

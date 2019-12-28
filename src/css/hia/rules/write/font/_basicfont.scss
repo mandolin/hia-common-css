@@ -1,0 +1,35 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//◆ 基本字体样式规则定义
+/**
+ * ◆ 基本字体样式规则定义
+ *
+ * @subsubsection basicfont_style_definition
+ */
+//系统界面字体
+%fzc{font:caption;}//使用有标题的系统控件的文本字体（如按钮，菜单等）（CSS2）
+%fzi{font:icon;}//使用图标标签的字体（CSS2）
+%fzm{font:menu;}//使用菜单的字体（CSS2）
+%fzmb{font:message-box;}//使用信息对话框的文本字体（CSS2）
+%fzsb{font:status-bar;}//使用窗口状态栏的字体（CSS2）
+%fzsc{font:small-caption;}//使用小控件的字体（CSS2）
+@if $IfGenCommonStyleDefinition
+{
+	@if $IfGenAllSelectors or index($SelectedSelectors, fzc){.fzc{@extend %fzc}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, fzi){.fzi{@extend %fzi}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, fzm){.fzm{@extend %fzm}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, fzmb){.fzmb{@extend %fzmb}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, fzsb){.fzsb{@extend %fzsb}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, fzsc){.fzsc{@extend %fzsc}}
+}
+//复合字体
+%fzss{font-family:$FONT_SANS_SERIF;}//英文无衬线字体集合
+%fzs{font-family:$FONT_SERIF;}//英文衬线字体集合
+%fzcd{font-family:$FONT_CODE;}//英文代码字体集合
+@if $IfGenCommonStyleDefinition
+{
+	@if $IfGenAllSelectors or index($SelectedSelectors, fzss){.fzss{@extend %fzss}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, fzs){.fzs{@extend %fzs}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, fzcd){.fzcd{@extend %fzcd}}
+}

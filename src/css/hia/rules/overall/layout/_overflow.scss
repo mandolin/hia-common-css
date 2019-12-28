@@ -1,0 +1,48 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//◆ 溢出样式规则定义
+/**
+ * ◆ 溢出样式规则定义
+ *
+ * @subsubsection overflow_style_definition
+ */
+//基本规则
+%ov{overflow:visible;}//对溢出内容不做处理，内容可能会超出容器。
+%o {overflow:hidden ;}//隐藏溢出容器的内容且不出现滚动条。label 常用
+%os{overflow:scroll ;}//隐藏溢出容器的内容，溢出的内容将以卷动滚动条的方式呈现。
+%oa{overflow:auto   ;}//当内容没有溢出容器时不出现滚动条，当内容溢出容器时出现滚动条，按需出现滚动条。此为body对象和textarea的默认值。
+@if $IfGenCommonStyleDefinition
+{
+	@if $IfGenAllSelectors or index($SelectedSelectors, ov){.ov{@extend %ov}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, o ){.o {@extend %o }}
+	@if $IfGenAllSelectors or index($SelectedSelectors, os){.os{@extend %os}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, oa){.oa{@extend %oa}}
+}
+//水平方向
+%oxv{overflow-x:visible;}//对溢出内容不做处理，内容可能会超出容器。
+%oxh{overflow-x:hidden ;}//隐藏溢出容器的内容且不出现滚动条。
+%oxs{overflow-x:scroll ;}//隐藏溢出容器的内容，溢出的内容将以卷动滚动条的方式呈现。
+%oxa{overflow-x:auto   ;}//当内容没有溢出容器时不出现滚动条，当内容溢出容器时出现滚动条，按需出现滚动条。此为body对象和textarea的默认值。
+@if $IfGenCommonStyleDefinition
+{
+	@if $IfGenAllSelectors or index($SelectedSelectors, oxv){.oxv{@extend %oxv}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, oxh){.oxh{@extend %oxh}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, oxs){.oxs{@extend %oxs}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, oxa){.oxa{@extend %oxa}}
+}
+//垂直方向
+%oyv{overflow-y:visible;}//对溢出内容不做处理，内容可能会超出容器。
+%oyh{overflow-y:hidden ;}//隐藏溢出容器的内容且不出现滚动条。
+%oys{overflow-y:scroll ;}//隐藏溢出容器的内容，溢出的内容将以卷动滚动条的方式呈现。
+%oya{overflow-y:auto   ;}//当内容没有溢出容器时不出现滚动条，当内容溢出容器时出现滚动条，按需出现滚动条。此为body对象和textarea的默认值。
+@if $IfGenCommonStyleDefinition
+{
+	@if $IfGenAllSelectors or index($SelectedSelectors, oyv){.oyv{@extend %oyv}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, oyh){.oyh{@extend %oyh}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, oys){.oys{@extend %oys}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, oya){.oya{@extend %oya}}
+}
+
+//todo clip值待后期css规范完善时再考虑是否加入
+//todo paged-x、paged-y、paged-x-controls、paged-y-controls、fragments等css3值待后期css规范完善时再考虑是否加入

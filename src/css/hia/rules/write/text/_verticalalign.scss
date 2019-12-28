@@ -1,0 +1,31 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//◆ 垂直对齐样式规则定义
+/**
+ * ◆ 垂直对齐样式规则定义
+ *
+ * @subsubsection verticalalign_style_definition
+ */
+//特定值
+%vbl{vertical-align:baseline;} //把当前盒的基线与父级盒的基线对齐。如果该盒没有基线，就将底部外边距的边界和父级的基线对齐 (默认值，可不定义)
+%vs{vertical-align:sub;} //
+%vsp{vertical-align:super;} //
+%vtt{vertical-align:text-top;} //
+%vtb{vertical-align:text-bottom;} //
+%vm{vertical-align:middle;} //
+%vt{vertical-align:top;} //
+%vb{vertical-align:bottom;} //
+@if $IfGenCommonStyleDefinition
+{
+	@if $IfGenAllSelectors or index($SelectedSelectors, vbl){.vbl{@extend %vbl}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, vs){.vs{@extend %vs}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, vsp){.vsp{@extend %vsp}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, vtt){.vtt{@extend %vtt}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, vtb){.vtb{@extend %vtb}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, vm){.vm{@extend %vm}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, vt){.vt{@extend %vt}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, vb){.vb{@extend %vb}}
+}
+//百分比值。（暂无）
+//数值。（暂无）note 可以用margin或padding实现同等效果

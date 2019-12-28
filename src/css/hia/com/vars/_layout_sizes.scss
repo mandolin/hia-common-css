@@ -1,0 +1,65 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//■ 布局尺寸值序列
+/**
+ * ■ 布局尺寸值序列
+ *
+ * note 给出适合设计规范的一些常用值。todo 待补充完善
+ *
+ * @subsection layout_sizes
+ */
+//显示分辨率尺寸（暂选择最常用的，todo 后期根据需要不断完善）
+$SIZE_RES_QVGA_X : 320px; //Quarter Video Graphics Array 四分之一的VGA
+$SIZE_RES_QVGA_Y : 240px; //Quarter Video Graphics Array 四分之一的VGA
+
+$SIZE_RES_VGA_X : 640px; //Video Graphics Array
+$SIZE_RES_VGA_Y : 480px; //Video Graphics Array
+
+$SIZE_RES_SVGA_X : 800px; //Super Video Graphics Array
+$SIZE_RES_SVGA_Y : 600px; //Super Video Graphics Array
+
+$SIZE_RES_QHD_X : 960px; //Quarter High Definition 四分之一标清
+$SIZE_RES_QHD_Y : 540px; //Quarter High Definition 四分之一标清
+
+$SIZE_RES_XGA_X : 1024px; //Xtended Video Graphics Array
+$SIZE_RES_XGA_Y : 768px;  //Xtended Video Graphics Array
+
+$SIZE_RES_HD_X : 1280px; //High Definition 720P 标清宽度，1280px, note 常用网页布局宽度
+$SIZE_RES_HD_Y : 720px;  //High Definition 720P 标清高度，720px
+
+$SIZE_RES_WXGAP_X : 1440px; //Wide eXtended Video Graphics Array Plus
+$SIZE_RES_WXGAP_Y : 900px;  //Wide eXtended Video Graphics Array Plus
+
+$SIZE_RES_WSXGAP_X : 1680px; //Wide Super eXtended Video Graphics Array Plus
+$SIZE_RES_WSXGAP_Y : 1050px; //Wide Super eXtended Video Graphics Array Plus
+
+$SIZE_RES_FHD_X : 1920px; //Full High Definition 全高清宽度，1920px, note 常用网页布局宽度
+$SIZE_RES_FHD_Y : 1080px; //Full High Definition 全高标清高度，1080px
+
+$SIZE_RES_WUXGA_X : 1920px; //Wide Ultra eXtended Video Graphics Array
+$SIZE_RES_WUXGA_Y : 1200px; //Wide Ultra eXtended Video Graphics Array
+
+$SIZE_RES_QXGA_X : 2048px; //Quad eXtended Video Graphics Array
+$SIZE_RES_QXGA_Y : 1536px; //Quad eXtended Video Graphics Array
+
+$SIZE_RES_WQHD_X : 2560px; //Wide Quad High Definition
+$SIZE_RES_WQHD_Y : 1440px; //Wide Quad High Definition
+
+$SIZE_RES_WQXGA_X : 2560px; //Wide Quad eXtended Graphics Array
+$SIZE_RES_WQXGA_Y : 1600px; //Wide Quad eXtended Graphics Array
+
+$SIZE_RES_QFHD_X : 3840px; //Quad Full High Definition 4k准高清
+$SIZE_RES_QFHD_Y : 2160px; //Quad Full High Definition 4k准高清
+
+$SIZE_RES_4K_X : 4096px; //4K Digital Cinema 4k高清
+$SIZE_RES_4K_Y : 2160px; //4K Digital Cinema 4k高清
+
+$SIZE_RES_5K_X : 5120px; //5K
+$SIZE_RES_5K_Y : 2880px; //5K
+
+//安卓设备显示尺寸（暂无 todo 后期完善）
+//IOS设备显示尺寸（暂无 todo 后期完善）
+//其它苹果设备显示尺寸（暂无 todo 后期完善）
+//其它设备显示尺寸（暂无 todo 后期完善）
+

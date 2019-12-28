@@ -1,0 +1,26 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//▲ 关联性自适应高度样式规则定义
+/**
+ * ▲ 关联性自适应高度样式规则定义
+ *
+ * note 作用是让同一行的浮动区域关联性自适应高度。
+ * 加在浮动区块上，
+ * 并在容器上加上cf/c和oh。
+ * 如果不需要关联性的话，
+ * 单纯在容器上加上cf/c即可。
+ *
+ * @subsubsubsection adaptiveheight_style_definition
+ */
+@mixin hia-ha{
+	padding-bottom:100000px;margin-bottom:-100000px;
+}
+%ha
+{
+	@include hia-ha;
+}
+@if $IfGenCommonStyleDefinition
+{
+	@if $IfGenAllSelectors or index($SelectedSelectors, ha){.ha{@extend %ha}}
+}

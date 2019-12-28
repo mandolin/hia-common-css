@@ -1,0 +1,38 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//◆ 层级样式规则定义
+/**
+ * ◆ 层级样式规则定义
+ *
+ * @subsubsection zindex_style_definition
+ */
+//数字值
+$ZIndexData:1,2,3,4,5,6,7,8,9,10,100;
+//生成规则定义
+@each $value in $ZIndexData
+{
+    %z#{$value} {z-index: $value}
+    %zx#{$value}{z-index:-$value}
+
+    @if $IfGenCommonStyleDefinition
+    {
+        @if $IfGenAllSelectors or index($SelectedSelectors, z#{$value} ){.z#{$value} {@extend %z#{$value}} }
+        @if $IfGenAllSelectors or index($SelectedSelectors, zx#{$value}){.zx#{$value}{@extend %zx#{$value}}}
+    }
+}
+//其它值
+%z0{z-index:0;}//
+%za{z-index:auto;}//元素在当前层叠上下文中的层叠级别是0。元素不会创建新的局部层叠上下文，除非它是根元素的层叠上下文。默认值，可不定义。
+%zm{z-index:2147483647;}//最顶层
+%zn{z-index:-2147483648;}//最底层
+@if $IfGenCommonStyleDefinition
+{
+	@if $IfGenAllSelectors or index($SelectedSelectors, z0){.z0{@extend %z0}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, zm){.zm{@extend %zm}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, zn){.zn{@extend %zn}}
+	//.za{@extend %za}
+}
+
+//todo 需要一些大数字时，最简命名可参考其英文缩略语。可选：比如 z1k{z-index:1000;} z2m{z-index:2000000;}
+//todo 其它值使用特定样式类名，或者后期用js计算。

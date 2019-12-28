@@ -1,0 +1,19 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//◆ unicode-bidi样式规则定义
+/**
+ * ◆ unicode-bidi样式规则定义
+ *
+ * @subsubsection unicodebidi_style_definition
+ */
+//特定值
+%un{unicode-bidi:normal;} // 对象不打开附加的嵌入层，对于内联元素，隐式重排序跨对象边界进行工作。(默认值，可不定义)
+%ue{unicode-bidi:embed;} // 对象打开附加的嵌入层，<' direction '> 属性的值指定嵌入层，在对象内部进行隐式重排序。
+%ub{unicode-bidi:bidi-override;} //严格按照 <' direction '> 属性的值重排序。忽略隐式双向运算规则。
+@if $IfGenCommonStyleDefinition
+{
+	@if $IfGenAllSelectors or index($SelectedSelectors, un){.un{@extend %un}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, ue){.ue{@extend %ue}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, ub){.ub{@extend %ub}}
+}

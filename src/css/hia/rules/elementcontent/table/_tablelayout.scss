@@ -1,0 +1,17 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//◆ 表格布局算法样式规则定义
+/**
+ * ◆ 表格布局算法样式规则定义
+ *
+ * @subsubsection tablelayout_style_definition
+ */
+//特定值
+%tla{table-layout:auto;} // 默认的自动算法。布局将基于各单元格的内容，换言之，可能你给某个单元格定义宽度为100px，但结果可能并不是100px。表格在每一单元格读取计算之后才会显示出来，速度很慢  (默认值，可不定义)
+%tlf{table-layout:fixed;} // 固定布局的算法。在这算法中，水平布局是仅仅基于表格的宽度，表格边框的宽度，单元格间距，列的宽度，而和表格内容无关。也就是说，内容可能被裁切
+@if $IfGenCommonStyleDefinition
+{
+	@if $IfGenAllSelectors or index($SelectedSelectors, tla){.tla{@extend %tla}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, tlf){.tlf{@extend %tlf}}
+}

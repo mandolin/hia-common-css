@@ -1,0 +1,126 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//◆ 边框综合样式规则定义
+/**
+ * ◆ 边框综合样式规则定义
+ *
+ * @subsubsection bordercomposite_style_definition
+ */
+//基本边框样式
+%bn{border:none;}//无边框 (默认值，可不定义)
+%bs{border:1px solid;}//基本边框
+%bt{border:1px dotted;}//点状轮廓
+%bd{border:1px dashed;}//虚线边框
+%bb{border:3px double;}//双线轮廓 note 至少3px才能呈现出双线效果。
+%bg{border:5px groove;}//3D凹槽轮廓 note 至少5px才能呈现出明显的3d效果。以下同理
+%br{border:5px ridge;}//3D凸槽轮廓
+%bi{border:5px inset;}//3D凹边轮廓
+%bo{border:5px outset;}//3D凸边轮廓
+%bh{border-style:hidden;}//隐藏边框（IE8+）
+@if $IfGenCommonStyleDefinition
+{
+	@if $IfGenAllSelectors or index($SelectedSelectors, bn){.bn{@extend %bn}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, bs){.bs{@extend %bs}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, bt){.bt{@extend %bt}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, bd){.bd{@extend %bd}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, bb){.bb{@extend %bb}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, bg){.bg{@extend %bg}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, br){.br{@extend %br}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, bi){.bi{@extend %bi}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, bo){.bo{@extend %bo}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, bh){.bh{@extend %bh}}
+
+}
+//边框宽度(暂只实现建议值)
+$BorderData:
+//建议实现值：
+	1,2,3,4,5,
+	10,15,20,25
+//候选值：
+	//6,,7,8,9,
+	//30,35,40,45,50,
+//备用值：（几乎不需）
+	//60,70,80,90,100
+;
+//生成规则定义
+@each $value in $BorderData
+{
+	%bw#{$value}{border-width:#{$value}px;}
+
+	@if $IfGenCommonStyleDefinition
+	{
+		@if $IfGenAllSelectors or index($SelectedSelectors, bw#{$value}){.bw#{$value}{@extend %bw#{$value}}}
+	}
+}
+//边框rem宽度(暂只实现建议值)
+$BorderRemData:
+//建议实现值：
+	1,2,3,4,5,
+	10,15,20,25
+//候选值：
+	//6,,7,8,9,
+	//30,35,40,45,50,
+//备用值：（几乎不需）
+	//60,70,80,90,100
+;
+//生成规则定义
+@each $value in $BorderRemData
+{
+	%bw#{$value}r{border-width:#{$value}rem;}
+
+	@if $IfGenCommonStyleDefinition
+	{
+		@if $IfGenAllSelectors or index($SelectedSelectors, bw#{$value}r){.bw#{$value}r{@extend %bw#{$value}r}}
+	}
+}
+//边框颜色(暂只实现建议值和定义文件所指定的命名颜色)
+/*
+建议实现值：
+	基本灰度数值：0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F
+候选值：
+	双数灰度数值：01.......fe
+	16个基本颜色关键字 Basic color keywords
+	拓展颜色关键字 Extended color keywords
+*/
+$BorderColorNData:0,1,2,3,4,5,6,7,8,9;
+$BorderColorLData:a,b,c,d,e,f;
+//生成规则定义
+//单数字灰度值
+@each $value in $BorderColorNData
+{
+	%dc#{$value}{border-color:#{"#"}#{$value}#{$value}#{$value};}
+	@if $IfGenCommonStyleDefinition
+	{
+		@if $IfGenAllSelectors or index($SelectedSelectors, dc#{$value}){.dc#{$value}{@extend %dc#{$value}}}
+	}
+}
+//单数字灰度值（16进制后6位字母）
+@each $value in $BorderColorLData
+{
+	%dcz#{$value}{border-color:#{"#"}#{$value}#{$value}#{$value};}
+	@if $IfGenCommonStyleDefinition
+	{
+		@if $IfGenAllSelectors or index($SelectedSelectors, dcz#{$value}){.dcz#{$value}{@extend %dcz#{$value}}}
+	}
+}
+//颜色关键字
+@each $var, $value in $COLORS
+{
+    $a:map-get($value, Abbr);
+    $v:map-get($value, Value);
+
+    %dc#{$a}
+	{
+		border-color:$v;
+	}
+	@if $IfGenCommonStyleDefinition and ($IfGenAllSelectors or index($SelectedSelectors, dc#{$a}))
+	{
+		.dc#{$a}
+		{
+			@extend %dc#{$a};
+		}
+	}
+}
+
+//todo 其它值使用特定样式类名，或者后期用js计算。

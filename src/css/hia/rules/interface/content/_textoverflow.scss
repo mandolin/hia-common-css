@@ -1,0 +1,23 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//◆ 文本溢出显示方式样式规则定义
+/**
+ * ◆ 文本溢出显示方式样式规则定义
+ *
+ * @subsubsection textoverflow_style_definition
+ */
+//特定值
+%toi{text-overflow:clip;} // 当内联内容溢出块容器时，将溢出部分裁切掉。 (默认值，可不定义)
+
+// 当内联内容溢出块容器时，将溢出部分替换为（...）。
+@mixin hia-toe{
+	white-space:nowrap;text-overflow:ellipsis;
+}
+%toe{@include hia-toe;}
+
+@if $IfGenCommonStyleDefinition
+{
+	@if $IfGenAllSelectors or index($SelectedSelectors, toi){.toi{@extend %toi}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, toe){.toe{@extend %toe}}
+}

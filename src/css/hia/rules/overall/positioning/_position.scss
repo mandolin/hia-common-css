@@ -1,0 +1,21 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+/**
+ * ◆ 位置样式规则定义
+ *
+ * @subsubsection position_style_definition
+ */
+%ps {position:static  ;}//对象遵循常规流。top，right，bottom，left等属性不会被应用。默认值，可不定义。
+%pr {position:relative;}//对象遵循常规流，并且参照自身在常规流中的位置通过top，right，bottom，left属性进行偏移时不影响常规流中的任何元素。
+%pa {position:absolute;}//对象脱离常规流，使用top，right，bottom，left等属性进行绝对定位，盒子的偏移位置不影响常规流中的任何元素，其margin不与其他任何margin折叠。
+%pf {position:fixed   ;}//对象脱离常规流，使用top，right，bottom，left等属性以窗口为参考点进行定位，当出现滚动条时，对象不会随着滚动。
+%pst{position:sticky  ;}//对象在常态时遵循常规流。它就像是relative和fixed的合体，当在屏幕中时按常规流排版，当卷动到屏幕外时则表现如fixed。该属性的表现是现实中你见到的吸附效果。（CSS3）
+@if $IfGenCommonStyleDefinition
+{
+    @if $IfGenAllSelectors or index($SelectedSelectors, ps ){.ps {@extend %ps }}
+    @if $IfGenAllSelectors or index($SelectedSelectors, pr ){.pr {@extend %pr }}
+    @if $IfGenAllSelectors or index($SelectedSelectors, pa ){.pa {@extend %pa }}
+    @if $IfGenAllSelectors or index($SelectedSelectors, pf ){.pf {@extend %pf }}
+    @if $IfGenAllSelectors or index($SelectedSelectors, pst){.pst{@extend %pst}}
+}

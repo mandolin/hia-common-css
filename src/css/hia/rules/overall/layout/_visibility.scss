@@ -1,0 +1,18 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//◆ 可见性样式规则定义
+/**
+ * ◆ 可见性样式规则定义
+ *
+ * @subsubsection visibility_style_definition
+ */
+%vv{visibility:visible ;}//设置对象可视。默认值，可不定义。
+%h {visibility:hidden  ;}//设置对象隐藏 label 常用
+%vc{visibility:collapse;}//主要用来隐藏表格的行或列。隐藏的行或列能够被其他内容使用。对于表格外的其他对象，其作用等同于hidden。
+@if $IfGenCommonStyleDefinition
+{
+	//.vv{@extend %vv}
+	@if $IfGenAllSelectors or index($SelectedSelectors, h){.h{@extend %h}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, vc){.vc{@extend %vc}}
+}

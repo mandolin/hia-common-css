@@ -1,0 +1,123 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//◆ 上下左右样式规则定义
+/**
+ * ◆ 上下左右样式规则定义
+ *
+ * @subsubsection trbl_style_definition
+ */
+//px数字值（暂只实现建议值）
+$TRBLData:
+//建议实现值：
+	0,1,2,3,4,5,10,15,20,25,30,35,40,45,50,60,70,80,90,100
+//候选值：
+	//6,7,8,9,120,150,200,250,300,400,500,
+//备用值：（几乎不需）：
+	//600,700,800,900,1000;
+;
+//生成px规则定义
+@each $value in $TRBLData
+{
+    %t#{$value}{top:#{$value}px;}%tx#{$value}{top:-#{$value}px;}
+    %r#{$value}{right:#{$value}px;}%rx#{$value}{right:-#{$value}px;}
+    %b#{$value}{bottom:#{$value}px;}%bx#{$value}{bottom:-#{$value}px;}
+    %l#{$value}{left:#{$value}px;}%lx#{$value}{left:-#{$value}px;}
+
+    @if $IfGenCommonStyleDefinition
+    {
+        @if $IfGenAllSelectors or index($SelectedSelectors, t#{$value}){.t#{$value}{@extend %t#{$value}}}
+        @if $IfGenAllSelectors or index($SelectedSelectors, tx#{$value}){.tx#{$value}{@extend %tx#{$value}}}
+
+        @if $IfGenAllSelectors or index($SelectedSelectors, r#{$value}){.r#{$value}{@extend %r#{$value}}}
+        @if $IfGenAllSelectors or index($SelectedSelectors, rx#{$value}){.rx#{$value}{@extend %rx#{$value}}}
+
+        @if $IfGenAllSelectors or index($SelectedSelectors, b#{$value}){.b#{$value}{@extend %b#{$value}}}
+        @if $IfGenAllSelectors or index($SelectedSelectors, bx#{$value}){.bx#{$value}{@extend %bx#{$value}}}
+
+        @if $IfGenAllSelectors or index($SelectedSelectors, l#{$value}){.l#{$value}{@extend %l#{$value}}}
+        @if $IfGenAllSelectors or index($SelectedSelectors, lx#{$value}){.lx#{$value}{@extend %lx#{$value}}}
+
+    }
+}
+//rem数字值（暂只实现建议值）
+$TRBLRemData:
+//建议实现值：
+	0,1,2,3,4,5,10,15,20,25,30,35,40,45,50,60,70,80,90,100
+//候选值：
+	//6,7,8,9,
+//备用值：（几乎不需）：
+
+;
+//生成rem规则定义
+@each $value in $TRBLRemData
+{
+	%t#{$value}r{top:#{$value}rem;}%tx#{$value}r{top:-#{$value}rem;}
+	%r#{$value}r{right:#{$value}rem;}%rx#{$value}r{right:-#{$value}rem;}
+	%b#{$value}r{bottom:#{$value}rem;}%bx#{$value}r{bottom:-#{$value}rem;}
+	%l#{$value}r{left:#{$value}rem;}%lx#{$value}r{left:-#{$value}rem;}
+
+	@if $IfGenCommonStyleDefinition
+	{
+		@if $IfGenAllSelectors or index($SelectedSelectors, t#{$value}r){.t#{$value}r{@extend %t#{$value}r}}
+		@if $IfGenAllSelectors or index($SelectedSelectors, tx#{$value}r){.tx#{$value}r{@extend %tx#{$value}r}}
+
+		@if $IfGenAllSelectors or index($SelectedSelectors, r#{$value}r){.r#{$value}r{@extend %r#{$value}r}}
+		@if $IfGenAllSelectors or index($SelectedSelectors, rx#{$value}r){.rx#{$value}r{@extend %rx#{$value}r}}
+
+		@if $IfGenAllSelectors or index($SelectedSelectors, b#{$value}r){.b#{$value}r{@extend %b#{$value}r}}
+		@if $IfGenAllSelectors or index($SelectedSelectors, bx#{$value}r){.bx#{$value}r{@extend %bx#{$value}r}}
+
+		@if $IfGenAllSelectors or index($SelectedSelectors, l#{$value}r){.l#{$value}r{@extend %l#{$value}r}}
+		@if $IfGenAllSelectors or index($SelectedSelectors, lx#{$value}r){.lx#{$value}r{@extend %lx#{$value}r}}
+
+	}
+}
+//百分比值。（暂只实现建议值）
+$TRBLPData:
+//建议实现值：
+	5,10,15,20,25,
+	30,35,40,45,50,
+	60,70,80,90,100
+//候选值：
+	//120,150,200,
+//备用值：（几乎不需）
+	//250,300,400,500
+	//600,700,800,900,1000
+;
+//生成规则定义
+@each $value in $TRBLPData
+{
+  %tp#{$value}{top:#{$value}#{"%"};}%txp#{$value}{top:-#{$value}#{"%"};}
+  %rp#{$value}{right:#{$value}#{"%"};}%rxp#{$value}{right:-#{$value}#{"%"};}
+  %bp#{$value}{bottom:#{$value}#{"%"};}%bxp#{$value}{bottom:-#{$value}#{"%"};}
+  %lp#{$value}{left:#{$value}#{"%"};}%lxp#{$value}{left:-#{$value}#{"%"};}
+
+  @if $IfGenCommonStyleDefinition
+  {
+	@if $IfGenAllSelectors or index($SelectedSelectors, tp#{$value}){.tp#{$value}{@extend %tp#{$value}}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, txp#{$value}){.txp#{$value}{@extend %txp#{$value}}}
+
+	@if $IfGenAllSelectors or index($SelectedSelectors, rp#{$value}){.rp#{$value}{@extend %rp#{$value}}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, rxp#{$value}){.rxp#{$value}{@extend %rxp#{$value}}}
+
+	@if $IfGenAllSelectors or index($SelectedSelectors, bp#{$value}){.bp#{$value}{@extend %bp#{$value}}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, bxp#{$value}){.bxp#{$value}{@extend %bxp#{$value}}}
+
+	@if $IfGenAllSelectors or index($SelectedSelectors, lp#{$value}){.lp#{$value}{@extend %lp#{$value}}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, lxp#{$value}){.lxp#{$value}{@extend %lxp#{$value}}}
+
+  }
+}
+//其他值
+%ta{top:auto;}%ra{right:auto;}%ba{bottom:auto;}%la{left:auto;}//无特殊定位，根据HTML定位规则在文档流中分配。默认值，可不定义。
+@if $IfGenCommonStyleDefinition
+{
+	@if $IfGenAllSelectors or index($SelectedSelectors, ta){.ta{@extend %ta}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, ra){.ra{@extend %ra}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, ba){.ba{@extend %ba}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, la){.la{@extend %la}}
+}
+
+//todo em等后缀值。.l1e{left:1em;}
+//todo 其它值使用特定样式类名，或者后期用js计算。

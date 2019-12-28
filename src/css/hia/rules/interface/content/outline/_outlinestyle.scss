@@ -1,0 +1,32 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//▲ 轮廓风格样式规则定义
+/**
+ * ▲ 轮廓风格样式规则定义
+ *
+ * @subsubsubsection outlinestyle_style_definition
+ */
+//基本轮廓样式
+%on{outline:none;}//无轮廓 (默认值，可不定义)
+%osd{outline:1px solid;}//基本轮廓
+%ot{outline:1px dotted;}//点状轮廓
+%od{outline:1px dashed;}//虚线轮廓
+%ob{outline:3px double;}//双线轮廓 note 至少3px才能呈现出双线效果。
+%og{outline:5px groove;}//3D凹槽轮廓 note 至少5px才能呈现出明显的3d效果。以下同理
+%or{outline:5px ridge;}//3D凸槽轮廓
+%oi{outline:5px inset;}//3D凹边轮廓
+%oo{outline:5px outset;}//3D凸边轮廓
+@if $IfGenCommonStyleDefinition
+{
+	@if $IfGenAllSelectors or index($SelectedSelectors, on){.on{@extend %on}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, osd){.osd{@extend %osd}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, ot){.ot{@extend %ot}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, od){.od{@extend %od}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, ob){.ob{@extend %ob}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, og){.og{@extend %og}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, or){.or{@extend %or}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, oi){.oi{@extend %oi}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, oo){.oo{@extend %oo}}
+
+}

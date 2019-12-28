@@ -1,0 +1,73 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//◆ 边框圆角样式规则定义
+/**
+ * ◆ 边框圆角样式规则定义
+ *
+ * @subsubsection borderradius_style_definition
+ */
+//圆角宽度(暂只实现建议值)
+$RadiusData:
+//建议实现值：
+	1,2,3,4,5,
+//候选值：
+	10,15,20,25,
+	6,7,8,9,
+	//30,35,40,45,50,
+//备用值：（几乎不需）
+	//60,70,80,90,100
+;
+//生成规则定义
+@each $value in $RadiusData
+{
+	%br#{$value}{border-radius:#{$value}px;}
+
+	@if $IfGenCommonStyleDefinition
+	{
+		@if $IfGenAllSelectors or index($SelectedSelectors, br#{$value}){.br#{$value}{@extend %br#{$value}}}
+	}
+}
+//圆角rem宽度(暂只实现建议值)
+$RadiusRemData:
+//建议实现值：
+	1,2,3,4,5,
+//候选值：
+	10,15,20,25,
+	6,7,8,9,
+	//30,35,40,45,50,
+//备用值：（几乎不需）
+	//60,70,80,90,100
+;
+//生成规则定义
+@each $value in $RadiusRemData
+{
+	%br#{$value}r{border-radius:#{$value}rem;}
+
+	@if $IfGenCommonStyleDefinition
+	{
+		@if $IfGenAllSelectors or index($SelectedSelectors, br#{$value}r){.br#{$value}r{@extend %br#{$value}r}}
+	}
+}
+//百分比值。（只实现建议值）
+$RadiusPData:
+//建议实现值：
+	20,25,10,
+	50
+//候选值：
+	//30,70,40,60,
+	//80,75,90,
+//备用值：（几乎不需）
+	//15,35,45,70。
+;
+//生成规则定义
+@each $value in $RadiusPData
+{
+	%brp#{$value}{border-radius:#{$value}#{"%"};}
+
+	@if $IfGenCommonStyleDefinition
+	{
+		@if $IfGenAllSelectors or index($SelectedSelectors, brp#{$value}){.brp#{$value}{@extend %brp#{$value}}}
+	}
+
+}

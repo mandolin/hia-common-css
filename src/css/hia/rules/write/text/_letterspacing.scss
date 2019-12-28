@@ -1,0 +1,102 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//◆ 字母间隔样式规则定义
+/**
+ * ◆ 字母间隔样式规则定义
+ *
+ * @subsubsection letterspacing_style_definition
+ */
+%lsn{letter-spacing:normal;}// 默认间隔。计算值为0 (默认值，可不定义。)
+@if $IfGenCommonStyleDefinition
+{
+    @if $IfGenAllSelectors or index($SelectedSelectors, lsn){.lsn{@extend %lsn}}
+}
+//单词间隔像素值(暂只实现建议值)
+$LetterSpacingData:
+//建议实现值：
+    1,2,3,4,5,
+    6,7,8,9,10,
+    11,12,13,14,15,
+    16,18,20,24,28,32,36,48
+//候选值：
+    //25,30,35,40,45,50,
+//备用值：（几乎不需）
+    //60,70,80,90,100
+;
+//生成规则定义
+@each $value in $LetterSpacingData
+{
+    %ls#{$value}{letter-spacing:#{$value}px;}
+
+    @if $IfGenCommonStyleDefinition
+    {
+        @if $IfGenAllSelectors or index($SelectedSelectors, ls#{$value}){.ls#{$value}{@extend %ls#{$value}}}
+    }
+}
+//单词间隔像素负值(暂只实现建议值)
+$LetterSpacingNegData:
+//建议实现值：
+    1,2,3,4,5,
+//候选值：
+    //6,7,8,9,10,
+    //11,12,13,14,15,
+    //16,18,20,24,28,32,36,48
+    //25,30,35,40,45,50,
+//备用值：（几乎不需）
+    //60,70,80,90,100
+;
+//生成规则定义
+@each $value in $LetterSpacingNegData
+{
+    %lsx#{$value}{letter-spacing:-#{$value}px;}
+
+    @if $IfGenCommonStyleDefinition
+    {
+        @if $IfGenAllSelectors or index($SelectedSelectors, lsx#{$value}){.lsx#{$value}{@extend %lsx#{$value}}}
+    }
+}
+//单词间隔rem值(暂只实现建议值)
+$LetterSpacingRemData:
+//建议实现值：
+    1,2,3,4,5,
+    6,7,8,9,10,
+    11,12,13,14,15,
+    16,18,20,24,28,32,36,48
+//候选值：
+    //25,30,35,40,45,50,
+//备用值：（几乎不需）
+    //60,70,80,90,100
+;
+//生成规则定义
+@each $value in $LetterSpacingRemData
+{
+    %ls#{$value}r{letter-spacing:#{$value}rem;}
+
+    @if $IfGenCommonStyleDefinition
+    {
+        @if $IfGenAllSelectors or index($SelectedSelectors, ls#{$value}r){.ls#{$value}r{@extend %ls#{$value}r}}
+    }
+}
+//单词间隔rem负值(暂只实现建议值)
+$LetterSpacingNegRemData:
+//建议实现值：
+    1,2,3,4,5,
+//候选值：
+    //6,7,8,9,10,
+    //11,12,13,14,15,
+    //16,18,20,24,28,32,36,48
+    //25,30,35,40,45,50,
+//备用值：（几乎不需）
+    //60,70,80,90,100
+;
+//生成规则定义
+@each $value in $LetterSpacingNegRemData
+{
+    %lsx#{$value}r{letter-spacing:-#{$value}rem;}
+
+    @if $IfGenCommonStyleDefinition
+    {
+        @if $IfGenAllSelectors or index($SelectedSelectors, lsx#{$value}r){.lsx#{$value}r{@extend %lsx#{$value}r}}
+    }
+}

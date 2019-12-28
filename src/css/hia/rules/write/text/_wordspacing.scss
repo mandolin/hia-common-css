@@ -1,0 +1,105 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//◆ 单词间隔样式规则定义
+/**
+ * ◆ 单词间隔样式规则定义
+ *
+ * @subsubsection wordspacing_style_definition
+ */
+%wdsn{word-spacing:normal;}// 默认间隔。计算值为0 (默认值，可不定义。)
+@if $IfGenCommonStyleDefinition
+{
+    @if $IfGenAllSelectors or index($SelectedSelectors, wdsn){.wdsn{@extend %wdsn}}
+}
+//单词间隔像素值(暂只实现建议值)
+$WordSpacingData:
+//建议实现值：
+    1,2,3,4,5,
+    6,7,8,9,10,
+    11,12,13,14,15,
+    16,18,20,24,28,32,36,48
+//候选值：
+    //25,30,35,40,45,50,
+//备用值：（几乎不需）
+    //60,70,80,90,100
+;
+//生成规则定义
+@each $value in $WordSpacingData
+{
+    %wds#{$value}{word-spacing:#{$value}px;}
+
+    @if $IfGenCommonStyleDefinition
+    {
+        @if $IfGenAllSelectors or index($SelectedSelectors, wds#{$value}){.wds#{$value}{@extend %wds#{$value}}}
+    }
+}
+//单词间隔像素负值(暂只实现建议值)
+$WordSpacingNegData:
+//建议实现值：
+    1,2,3,4,5,
+//候选值：
+    6,7,8,9,10,
+    11,12,13,14,15,
+    16,18,20,24,
+    //28,32,36,48,
+    //25,30,35,40,45,50,
+//备用值：（几乎不需）
+    //60,70,80,90,100
+;
+//生成规则定义
+@each $value in $WordSpacingNegData
+{
+    %wdsx#{$value}{word-spacing:-#{$value}px;}
+
+    @if $IfGenCommonStyleDefinition
+    {
+        @if $IfGenAllSelectors or index($SelectedSelectors, wdsx#{$value}){.wdsx#{$value}{@extend %wdsx#{$value}}}
+    }
+}
+//单词间隔rem值(暂只实现建议值)
+$WordSpacingRemData:
+//建议实现值：
+    1,2,3,4,5,
+    6,7,8,9,10,
+    11,12,13,14,15,
+    16,18,20,24,28,32,36,48
+//候选值：
+    //25,30,35,40,45,50,
+//备用值：（几乎不需）
+    //60,70,80,90,100
+;
+//生成规则定义
+@each $value in $WordSpacingRemData
+{
+    %wds#{$value}r{word-spacing:#{$value}rem;}
+
+    @if $IfGenCommonStyleDefinition
+    {
+        @if $IfGenAllSelectors or index($SelectedSelectors, wds#{$value}r){.wds#{$value}r{@extend %wds#{$value}r}}
+    }
+}
+//单词间隔rem负值(暂只实现建议值)
+$WordSpacingNegRemData:
+//建议实现值：
+    1,2,3,4,5,
+//候选值：
+    //6,7,8,9,10,
+    //11,12,13,14,15,
+    //16,18,20,24,28,32,36,48
+    //25,30,35,40,45,50,
+//备用值：（几乎不需）
+    //60,70,80,90,100
+;
+//生成规则定义
+@each $value in $WordSpacingNegRemData
+{
+    %wdsx#{$value}r{word-spacing:-#{$value}rem;}
+
+    @if $IfGenCommonStyleDefinition
+    {
+        @if $IfGenAllSelectors or index($SelectedSelectors, wdsx#{$value}r){.wdsx#{$value}r{@extend %wdsx#{$value}r}}
+    }
+}
+
+ //百分比值。（暂无）

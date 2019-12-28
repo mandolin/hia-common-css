@@ -1,0 +1,17 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//◆ 文本流方向样式规则定义
+/**
+ * ◆ 文本流方向样式规则定义
+ *
+ * @subsubsection direction_style_definition
+ */
+//特定值
+%dltr{direction:ltr;} //文本流从左到右。  (默认值，可不定义)
+%drtl{direction:rtl;} //文本流从右到左。
+@if $IfGenCommonStyleDefinition
+{
+	@if $IfGenAllSelectors or index($SelectedSelectors, dltr){.dltr{@extend %dltr}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, drtl){.drtl{@extend %drtl}}
+}

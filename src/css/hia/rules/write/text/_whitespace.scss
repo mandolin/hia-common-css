@@ -1,0 +1,22 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//◆ 空白字符样式规则定义
+/**
+ * ◆ 空白字符样式规则定义
+ *
+ * @subsubsection whitespace_style_definition
+ */
+%wsn{white-space:normal;}//默认处理方式。会将序列的空格合并为一个，内部是否换行由换行规则决定。 (默认值，可不定义。)
+%wsp{white-space:pre;}// 原封不动的保留你输入时的状态，空格、换行都会保留，并且当文字超出边界时不换行。等同 pre 元素效果
+%wsnw{white-space:nowrap;}// 与normal值一致，不同的是会强制所有文本在同一行内显示。
+%wspw{white-space:pre-wrap;}// 与pre值一致，不同的是文字超出边界时将自动换行。
+%wspl{white-space:pre-line;}// 与normal值一致，但是会保留文本输入时的换行。
+@if $IfGenCommonStyleDefinition
+{
+    @if $IfGenAllSelectors or index($SelectedSelectors, wsn){.wsn{@extend %wsn}}
+    @if $IfGenAllSelectors or index($SelectedSelectors, wsp){.wsp{@extend %wsp}}
+    @if $IfGenAllSelectors or index($SelectedSelectors, wsnw){.wsnw{@extend %wsnw}}
+    @if $IfGenAllSelectors or index($SelectedSelectors, wspw){.wspw{@extend %wspw}}
+    @if $IfGenAllSelectors or index($SelectedSelectors, wspl){.wspl{@extend %wspl}}
+}

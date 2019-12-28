@@ -1,0 +1,19 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//◆ 伸缩盒一般性样式规则定义
+/**
+ * ◆ 伸缩盒一般性样式规则定义
+ *
+ * @subsubsection flexgeneral_style_definition
+ */
+//特定值
+%fli{flex:initial;} // 计算值为「0 1 auto」 (默认值，可不定义)
+%fla{flex:auto;} // 计算值为「1 1 auto」
+%fln{flex:none;} // 计算值为「0 0 auto」
+@if $IfGenCommonStyleDefinition
+{
+	@if $IfGenAllSelectors or index($SelectedSelectors, fli){.fli{@extend %fli}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, fla){.fla{@extend %fla}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, fln){.fln{@extend %fln}}
+}

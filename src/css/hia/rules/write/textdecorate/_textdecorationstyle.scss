@@ -1,0 +1,24 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//◆ 文本装饰风格样式规则定义
+/**
+ * ◆ 文本装饰风格样式规则定义
+ *
+ * @subsubsection textdecorationstyle_style_definition
+ */
+//特定值
+%tsd{text-decoration-style:solid;} //实线  (默认值，可不定义)
+%tdb{text-decoration-style:double;} //双线
+%tdt{text-decoration-style:dotted;} //点状线条
+%tds{text-decoration-style:dashed;} //虚
+%twv{text-decoration-style:wavy;} //波浪线
+@if $IfGenCommonStyleDefinition
+{
+	@if $IfGenAllSelectors or index($SelectedSelectors, tsd){.tsd{@extend %tsd}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, tdb){.tdb{@extend %tdb}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, tdt){.tdt{@extend %tdt}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, tds){.tds{@extend %tds}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, twv){.twv{@extend %twv}}
+
+}

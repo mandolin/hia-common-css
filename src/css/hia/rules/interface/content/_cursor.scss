@@ -1,0 +1,84 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//◆ 光标样式规则定义
+/**
+ * ◆ 光标样式规则定义
+ *
+ * @subsubsection cursor_style_definition
+ */
+//参见https://developer.mozilla.org/en-US/docs/Web/CSS/cursor
+
+//General
+%sa{cursor:auto;}//浏览器自动识别的光标 (默认值，可不定义)
+%sd{cursor:default;}//默认光标，通常是一个箭头
+%sn{cursor:none;}//隐藏光标
+
+//Links & status
+%sh{cursor:help;}//帮助指针
+
+//手型指针
+@mixin hia-sp{
+	cursor:pointer;cursor:hand;
+}
+%sp{@include hia-sp;}
+
+%sw{cursor:wait;}//此光标指示程序正忙（通常是一只表或沙漏）。
+%scm{cursor:context-menu;}//上下文菜单光标
+%spg{cursor:progress;}//此光标指示程序处理中
+
+//Selection
+%st{cursor:text;}//文本指针
+%sv{cursor:vertical-text;}//垂直文本指针
+%sch{cursor:crosshair;}//光标呈现为十字线。一般用于选择图像的部分区域
+%scl{cursor:cell;}//光标呈现为十字架。一般用于选择表格的单元格（类似excel）
+
+//Drag & drop
+%sm{cursor:move;}//此光标指示某对象可被移动。
+%sal{cursor:alias;}//此光标指示正在设置别名或创建快捷方式。
+%sc{cursor:copy;}//此光标指示正在复制。
+%snd{cursor:no-drop;}//此光标指示禁止拖放到此（元素区域）
+%sna{cursor:not-allowed;}//此光标指示禁止操作。
+%sg{cursor:grab;}//此光标指示某对象可被幕布式拖动。
+%sgb{cursor:grabbing;}//此光标指示某对象正在被幕布式拖动。
+
+//Resizing & scrolling
+%ser{cursor:e-resize;}//e-resize	此光标指示矩形框的边缘可被向右（东）移动。
+%snr{cursor:n-resize;}//n-resize	此光标指示矩形框的边缘可被向上（北）移动。
+%ssr{cursor:s-resize;}//s-resize	此光标指示矩形框的边缘可被向下移动（南）。
+%swr{cursor:w-resize;}//w-resize	此光标指示矩形框的边缘可被向左移动（西）。
+%sner{cursor:ne-resize;}//ne-resize	此光标指示矩形框的边缘可被向上及向右移动（北/东）。
+%snwr{cursor:nw-resize;}//nw-resize	此光标指示矩形框的边缘可被向上及向左移动（北/西）。
+%sser{cursor:se-resize;}//se-resize	此光标指示矩形框的边缘可被向下及向右移动（南/东）。
+%sswr{cursor:sw-resize;}//sw-resize	此光标指示矩形框的边缘可被向下及向左移动（南/西）。
+
+%sneswr{cursor:nesw-resize;}//nesw-resize	此光标指示可被西南-东北（下左-上右）对角线式双向移动。
+%snwser{cursor:nwse-resize;}//nwse-resize	此光标指示可被西北-东南（上左-下右）对角线式双向移动。
+%sewr{cursor:ew-resize;}//ew-resize	此光标指示可被东西（左右）方向双向移动。
+%snsr{cursor:ns-resize;}//ns-resize	此光标指示可被南北（上下）方向双向移动。
+
+%sas{cursor:all-scroll;}//此光标指示某对象区域可被全向滚动
+
+%scr{cursor:col-resize;}//此光标指示某条目列可被水平调整大小
+%srr{cursor:row-resize;}//此光标指示某条目行可被垂直调整大小
+
+//Zooming
+%szi{cursor:zoom-in;}//此光标指示某对象可被放大
+%szo{cursor:zoom-out;}//此光标指示某对象可被缩小
+
+$CursorData:
+	sa,sd,sn,
+	sh,sp,sw,scm,spg,
+	st,sv,sch,scl,
+	sm,sal,sc,snd,sna,sg,sgb,
+	ser,snr,ssr,swr,sner,snwr,sser,sswr,sneswr,snwser,sewr,snsr,sas,scr,srr,szi,szo
+
+;
+
+@each $value in $CursorData
+{
+	@if $IfGenCommonStyleDefinition
+	{
+		@if $IfGenAllSelectors or index($SelectedSelectors, #{$value}){.#{$value}{@extend %#{$value}}}
+	}
+}

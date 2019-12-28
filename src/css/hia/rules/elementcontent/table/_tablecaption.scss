@@ -1,0 +1,17 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//◆ 表格caption样式规则定义
+/**
+ * ◆ 表格caption样式规则定义
+ *
+ * @subsubsection tablecaption_style_definition
+ */
+//特定值
+%tbcst{caption-side:top;} // 指定caption在表格上边  (默认值，可不定义)
+%tbcsb{caption-side:bottom;} // 指定caption在表格下边
+@if $IfGenCommonStyleDefinition
+{
+	@if $IfGenAllSelectors or index($SelectedSelectors, tbcst){.tbcst{@extend %tbcst}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, tbcsb){.tbcsb{@extend %tbcsb}}
+}

@@ -1,0 +1,70 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//◆ 字体家族样式规则定义
+/**
+ * ◆ 字体家族样式规则定义
+ *
+ * @subsubsection fontfamily_style_definition
+ */
+//常用字体 todo 增加更多常用字体
+%fsss{font-family:$FONT_SYS_SANS_SERIF;}//系统无衬线字体
+%fss{font-family:$FONT_SYS_SERIF;}//系统衬线字体
+
+%fa{font-family:$FONT_ARIAL;}//3.1
+%fab{font-family:$FONT_ARIAL_BLACK;}
+%fc{font-family:$FONT_CALIBRI;}//Vista
+%fcs{font-family:$FONT_CONSOLAS;}//Vista
+%fcn{font-family:$FONT_COURIER_NEW;}//3.1
+%fg{font-family:$FONT_GEORGIA;}//2000
+%fv{font-family:$FONT_VERDANA;}//95
+%fcsm{font-family:$FONT_COMIC_SANS_MS;}//95
+%fgm{font-family:$FONT_GARAMOND;}
+%fi{font-family:$FONT_IMPACT;}
+%fht{font-family:$FONT_HELVETICA;}
+%flc{font-family:$FONT_LUCIDA_CONSOLE;}
+%fp{font-family:$FONT_PROFONT;}
+%fpg{font-family:$FONT_PROGGY;}
+%ft{font-family:$FONT_TAHOMA;}
+%ftm{font-family:$FONT_TREBUCHET_MS;}
+%ftnr{font-family:$FONT_TIMES_NEW_ROMAN;}//3.1
+
+%fy{font-family:$FONT_YAHEI;}//微软雅黑
+%fx{font-family:$FONT_NSIMSUN;}//新宋体
+%fh{font-family:$FONT_SIMHEI;}//黑体
+%fk{font-family:$FONT_SIMKAI;}//楷体
+%fs{font-family:$FONT_SIMSUN;}//宋体
+%ff{font-family:$FONT_FANGSONG;}//仿宋
+
+//生成规则定义
+@if $IfGenCommonStyleDefinition
+{
+	@if $IfGenAllSelectors or index($SelectedSelectors, fsss){.fsss{@extend %fsss}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, fss){.fss{@extend %fss}}
+
+	@if $IfGenAllSelectors or index($SelectedSelectors, fa){.fa{@extend %fa}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, fab){.fab{@extend %fab}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, fc){.fc{@extend %fc}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, fcs){.fcs{@extend %fcs}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, fcn){.fcn{@extend %fcn}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, fg){.fg{@extend %fg}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, fv){.fv{@extend %fv}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, fcsm){.fcsm{@extend %fcsm}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, fgm){.fgm{@extend %fgm}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, fi){.fi{@extend %fi}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, fht){.fht{@extend %fht}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, flc){.flc{@extend %flc}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, fp){.fp{@extend %fp}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, fpg){.fpg{@extend %fpg}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, ft){.ft{@extend %ft}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, ftm){.ftm{@extend %ftm}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, ftnr){.ftnr{@extend %ftnr}}
+
+	@if $IfGenAllSelectors or index($SelectedSelectors, fy){.fy{@extend %fy}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, fx){.fx{@extend %fx}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, fh){.fh{@extend %fh}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, fk){.fk{@extend %fk}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, fs){.fs{@extend %fs}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, ff){.ff{@extend %ff}}
+
+}

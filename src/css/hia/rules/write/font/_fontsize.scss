@@ -1,0 +1,78 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//◆ 字体尺寸样式规则定义
+/**
+ * ◆ 字体尺寸样式规则定义
+ *
+ * @subsubsection fontsize_style_definition
+ */
+//绝对参照字体<absolute-size> note  根据对象字号进行调节。以 medium 作为基础参照，xx-small相当于medium 3/5 (h6)，x-small: 3/4，small: 8/9 (h5)，medium: 1 (h4)，large: 6/5 (h3)，x-large: 3/2 (h2)，xx-large: 2/1 (h1)，
+%fasxxs{font-size:xx-small;}
+%fasxs{font-size:x-small;}
+%fass{font-size:small;}
+%fasm{font-size:medium ;}//默认值
+%fasl{font-size:large ;}
+%fasxl{font-size:x-large ;}
+%fasxxl{font-size:xx-large ;}
+@if $IfGenCommonStyleDefinition
+{
+	@if $IfGenAllSelectors or index($SelectedSelectors, fasxxs){.fasxxs{@extend %fasxxs}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, fasxs){.fasxs{@extend %fasxs}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, fass){.fass{@extend %fass}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, fasm){.fasm{@extend %fasm}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, fasl){.fasl{@extend %fasl}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, fasxl){.fasxl{@extend %fasxl}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, fasxxl){.fasxxl{@extend %fasxxl}}
+}
+//相对参照字体<relative-size> note   相对于父对像中字号进行相对调节。使用成比例的em单位计算。
+%frss{font-size:smaller;}
+%frsl{font-size:larger;}
+@if $IfGenCommonStyleDefinition
+{
+	@if $IfGenAllSelectors or index($SelectedSelectors, frss){.frss{@extend %frss}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, frsl){.frsl{@extend %frsl}}
+}
+//像素值(暂只实现建议值)
+$FontSizeData:
+//建议实现值：
+	0,9,10,11,12,13,14,15,16,18,20,24,28,32,36,48
+//候选值：
+	//25,30
+//备用值：（几乎不需）
+	//
+;
+//生成规则定义
+@each $value in $FontSizeData
+{
+	%f#{$value}{font-size:#{$value}px;}
+
+	@if $IfGenCommonStyleDefinition
+	{
+		@if $IfGenAllSelectors or index($SelectedSelectors, f#{$value}){.f#{$value}{@extend %f#{$value}}}
+	}
+}
+//尺寸rem(暂只实现建议值)
+$FontSizeRemData:
+//建议实现值：
+	1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,18,20,24,28,32,36,48
+//候选值：
+	//25,30
+//备用值：（几乎不需）
+	//
+;
+//生成规则定义
+@each $value in $FontSizeRemData
+{
+	%f#{$value}r{font-size:#{$value}rem;}
+
+	@if $IfGenCommonStyleDefinition
+	{
+		@if $IfGenAllSelectors or index($SelectedSelectors, f#{$value}r){.f#{$value}r{@extend %f#{$value}r}}
+	}
+}
+
+
+
+
+//百分比值。（note 暂不实现）

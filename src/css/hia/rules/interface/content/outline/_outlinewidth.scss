@@ -1,0 +1,51 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//▲ 轮廓厚度样式规则定义
+/**
+ * ▲ 轮廓厚度样式规则定义
+ *
+ * @subsubsubsection outlinewidth_style_definition
+ */
+//轮廓宽度(暂只实现建议值)
+$OutlineData:
+//建议实现值：
+	1,2,3,4,5,
+	10,15,20,25
+//候选值：
+	//6,,7,8,9,
+	//30,35,40,45,50,
+//备用值：（几乎不需）
+	//60,70,80,90,100
+;
+//生成规则定义
+@each $value in $OutlineData
+{
+	%ow#{$value}{outline-width:#{$value}px;}
+
+	@if $IfGenCommonStyleDefinition
+	{
+		@if $IfGenAllSelectors or index($SelectedSelectors, ow#{$value}){.ow#{$value}{@extend %ow#{$value}}}
+	}
+}
+//轮廓rem宽度(暂只实现建议值)
+$OutlineRemData:
+//建议实现值：
+	1,2,3,4,5,
+	10,15,20,25
+//候选值：
+	//6,,7,8,9,
+	//30,35,40,45,50,
+//备用值：（几乎不需）
+	//60,70,80,90,100
+;
+//生成规则定义
+@each $value in $OutlineRemData
+{
+	%ow#{$value}r{outline-width:#{$value}rem;}
+
+	@if $IfGenCommonStyleDefinition
+	{
+		@if $IfGenAllSelectors or index($SelectedSelectors, ow#{$value}r){.ow#{$value}r{@extend %ow#{$value}r}}
+	}
+}

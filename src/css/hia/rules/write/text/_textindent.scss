@@ -1,0 +1,101 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//◆ 文本缩进样式规则定义
+/**
+ * ◆ 文本缩进样式规则定义
+ *
+ * @subsubsection textindent_style_definition
+ */
+//文本缩进像素值(暂只实现建议值)
+$TextIndentData:
+//建议实现值：
+	1,2,3,4,5,
+	6,7,8,9,10,
+	11,12,13,14,15,
+	16,18,20,24,28,32,36,48,
+	22,26,30,40,56,64,72,96,
+//候选值：
+	//25,30,35,40,45,50,
+//备用值：（几乎不需）
+	//60,70,80,90,100
+;
+//生成规则定义
+@each $value in $TextIndentData
+{
+	%ti#{$value}{text-indent:#{$value}px;}
+
+	@if $IfGenCommonStyleDefinition
+	{
+		@if $IfGenAllSelectors or index($SelectedSelectors, ti#{$value}){.ti#{$value}{@extend %ti#{$value}}}
+	}
+}
+//文本缩进像素负值(暂只实现建议值)
+$TextIndentNegData:
+//建议实现值：
+	1,2,3,4,5,
+	6,7,8,9,10,
+	11,12,13,14,15,
+	16,18,20,24,28,32,36,48,
+//候选值：
+	//25,30,35,40,45,50,
+//备用值：（几乎不需）
+	//60,70,80,90,100
+;
+//生成规则定义
+@each $value in $TextIndentNegData
+{
+	%tix#{$value}{text-indent:-#{$value}px;}
+
+	@if $IfGenCommonStyleDefinition
+	{
+		@if $IfGenAllSelectors or index($SelectedSelectors, tix#{$value}){.tix#{$value}{@extend %tix#{$value}}}
+	}
+}
+//文本缩进rem值(暂只实现建议值)
+$TextIndentRemData:
+//建议实现值：
+	1,2,3,4,5,
+	6,7,8,9,10,
+	11,12,13,14,15,
+	16,18,20,24,28,32,36,48,
+	22,26,30,40,56,64,72,96,
+//候选值：
+	//25,30,35,40,45,50,
+//备用值：（几乎不需）
+	//60,70,80,90,100
+;
+//生成规则定义
+@each $value in $TextIndentRemData
+{
+	%ti#{$value}r{text-indent:#{$value}rem;}
+
+	@if $IfGenCommonStyleDefinition
+	{
+		@if $IfGenAllSelectors or index($SelectedSelectors, ti#{$value}r){.ti#{$value}r{@extend %ti#{$value}r}}
+	}
+}
+//文本缩进rem负值(暂只实现建议值)
+$TextIndentNegRemData:
+//建议实现值：
+	1,2,3,4,5,
+	6,7,8,9,10,
+	11,12,13,14,15,
+	16,18,20,24,28,32,36,48,
+//候选值：
+	//25,30,35,40,45,50,
+//备用值：（几乎不需）
+	//60,70,80,90,100
+;
+//生成规则定义
+@each $value in $TextIndentNegRemData
+{
+	%tix#{$value}r{text-indent:-#{$value}rem;}
+
+	@if $IfGenCommonStyleDefinition
+	{
+		@if $IfGenAllSelectors or index($SelectedSelectors, tix#{$value}r){.tix#{$value}r{@extend %tix#{$value}r}}
+	}
+}
+
+//百分比值。（暂无）

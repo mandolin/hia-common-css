@@ -1,0 +1,26 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//◆ 背景填充样式规则定义
+/**
+ * ◆ 背景填充样式规则定义
+ *
+ * @subsubsection bgrepeat_style_definition
+ */
+%brrx{background-repeat:repeat-x } //背景图像在横向上平铺
+%brry{background-repeat:repeat-y } //背景图像在纵向上平铺
+%brr {background-repeat:repeat   } //背景图像在横向和纵向平铺(默认值，可不定义)
+%brnr{background-repeat:no-repeat}//背景图像不平铺
+%brrd{background-repeat:round    }//当背景图像不能以整数次平铺时，会根据情况缩放图像。（CSS3）
+%brs {background-repeat:space    }//当背景图像不能以整数次平铺时，会用空白间隙填充在图像周围。（CSS3）
+
+@if $IfGenCommonStyleDefinition
+{
+    @if $IfGenAllSelectors or index($SelectedSelectors, brrx){.brrx{@extend %brrx}}
+    @if $IfGenAllSelectors or index($SelectedSelectors, brry){.brry{@extend %brry}}
+    @if $IfGenAllSelectors or index($SelectedSelectors, brr){.brr{@extend %brr}}
+    @if $IfGenAllSelectors or index($SelectedSelectors, brnr){.brnr{@extend %brnr}}
+    @if $IfGenAllSelectors or index($SelectedSelectors, brrd){.bn{@extend %brrd}}
+    @if $IfGenAllSelectors or index($SelectedSelectors, brs){.bn{@extend %brs}}
+
+}

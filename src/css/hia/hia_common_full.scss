@@ -1,0 +1,36 @@
+@charset "UTF-8";
+/*! hia_common_full.scss v0.0.1 | MIT License */
+//HIA CSS 框架 SCSS 通用common样式文件(完整版)
+/**
+ * HIA CSS 框架 SCSS 通用common样式文件(完整版)
+ *
+ * 样式规则的通用抽象整理和类定义
+ * 主要包括整体样式定义、盒模型、显示样式、文字样式、内容样式、高级界面样式、效果样式、响应式样式以及其它。
+ *
+ * note 完整版包含（架构文件所设定的）所有定义。
+ *
+ * @project   HIA CSS 框架
+ * @file      hia_common_full.scss
+ * @version   0.0.1
+ * @package   scss
+ * @author    mandolin
+ * @copyright 2015 by mandolin
+ * @cssdoc    version 1.0-pre
+ * @license   MIT
+ *
+ * @note      以下颜色定义仅为示例，需要根据项目情况改为实际用到的值。
+ * @colordef  #fff;    白色
+ * @colordef  #808080; 标准灰色
+ *
+ * @note      以下样式规则需要根据站点实际情况选用。
+ */
+/*----------------------------------------------------------------------------------------------------*/
+/**
+ * ◎ 相关变量
+ *
+ * @section overall_variables
+ */
+$IfGenCommonStyleDefinition : true; //生成通用样式的实际定义
+$IfGenAllSelectors          : true; //生成所有选择器
+/*----------------------------------------------------------------------------------------------------*/
+@import "_sys";//导入common通用样式定义（架构文件）

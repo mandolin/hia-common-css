@@ -1,0 +1,53 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//◆ 字体样式、字体粗细等样式规则定义
+/**
+ * ◆ 字体样式、字体粗细等样式规则定义
+ *
+ * @subsubsection fontstyle_style_definition
+ */
+ @mixin hia-fn{//普通样式
+	font-weight:normal; font-style:normal;font-variant:normal;font-stretch:normal;
+}
+%fn{@include hia-fn;}
+
+%b{font-weight:bold;}//粗体
+%i{font-style:oblique;}//斜体
+%fvsc{font-variant:small-caps;}//小型的大写字母字体
+
+%fbd{font-weight: bolder}//定义比继承值更重的值
+%flt{font-weight: lighter}//定义比继承值更轻的值
+
+%fw1{font-weight: 100}//
+%fw2{font-weight: 200}//
+%fw3{font-weight: 300}//
+%fw4{font-weight: 400}//等同于normal
+%fw5{font-weight: 500}//
+%fw6{font-weight: 600}//
+%fw7{font-weight: 700}//等同于bold
+%fw8{font-weight: 800}//
+%fw9{font-weight: 900}//
+
+@if $IfGenCommonStyleDefinition
+{
+	@if $IfGenAllSelectors or index($SelectedSelectors, fn){.fn{@extend %fn}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, b){.b{@extend %b}}
+	@if $IfGenAllSelectors or index($SelectedSelectors, i){.i{@extend %i}}
+    @if $IfGenAllSelectors or index($SelectedSelectors, fvsc){.fvsc{@extend %fvsc}}
+
+    @if $IfGenAllSelectors or index($SelectedSelectors, fbd){.fbd{@extend %fbd}}
+    @if $IfGenAllSelectors or index($SelectedSelectors, flt){.flt{@extend %flt}}
+
+    @if $IfGenAllSelectors or index($SelectedSelectors, fw1){.fw1{@extend %fw1}}
+    @if $IfGenAllSelectors or index($SelectedSelectors, fw2){.fw2{@extend %fw2}}
+    @if $IfGenAllSelectors or index($SelectedSelectors, fw3){.fw3{@extend %fw3}}
+    @if $IfGenAllSelectors or index($SelectedSelectors, fw4){.fw4{@extend %fw4}}
+    @if $IfGenAllSelectors or index($SelectedSelectors, fw5){.fw5{@extend %fw5}}
+    @if $IfGenAllSelectors or index($SelectedSelectors, fw6){.fw6{@extend %fw6}}
+    @if $IfGenAllSelectors or index($SelectedSelectors, fw7){.fw7{@extend %fw7}}
+    @if $IfGenAllSelectors or index($SelectedSelectors, fw8){.fw8{@extend %fw8}}
+    @if $IfGenAllSelectors or index($SelectedSelectors, fw9){.fw9{@extend %fw9}}
+
+
+}

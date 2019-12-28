@@ -1,0 +1,21 @@
+@charset "UTF-8";
+// todo  后期完善整理文档注释
+/*----------------------------------------------------------------------------------------------------*/
+//◆ 背景图像裁剪区域样式规则定义
+/**
+ * ◆ 背景图像裁剪区域样式规则定义
+ *
+ * @subsubsection bgclip_style_definition
+ */
+ %bgcb{background-clip:border -box} // 从border区域（含border）开始向外裁剪背景。 (默认值，可不定义)
+ %bgcp{background-clip:padding-box} // 从padding区域（含padding）开始向外裁剪背景。
+ %bgcc{background-clip:content-box} // 从content区域开始向外裁剪背景。
+ %bgct{background-clip:text       } // 从前景内容的形状（比如文字）作为裁剪区域向外裁剪，如此即可实现使用背景作为填充色之类的遮罩效果。遮罩效果 http://demo.doyoe.com/css3/background-clip/mask-text2.htm
+@if $IfGenCommonStyleDefinition
+{
+    @if $IfGenAllSelectors or index($SelectedSelectors, bgcb){.bgcb{@extend %bgcb}}
+    @if $IfGenAllSelectors or index($SelectedSelectors, bgcp){.bgcp{@extend %bgcp}}
+    @if $IfGenAllSelectors or index($SelectedSelectors, bgcc){.bgcc{@extend %bgcc}}
+    @if $IfGenAllSelectors or index($SelectedSelectors, bgct){.bgct{@extend %bgct}}
+
+}
