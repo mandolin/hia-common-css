@@ -6,3 +6,5 @@ an atom css lib
 
 This is a "atomic" css lib,very simple and easy to use.\
 Detailed description and documentation will be soon.
+
+    npm i hia-common-css
